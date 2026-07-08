@@ -2,11 +2,15 @@
   const preview = document.getElementById('preview');
   let state = JSON.parse(JSON.stringify(TPLV2.defaultState));
 
-  const m = /(?:data|edit)=([^&]+)/.exec(location.hash);
-  if (m) { try { state = Object.assign(state, decodeState(m[1])); } catch (e) {} }
-
   // тема шаблона из ?theme= (по умолчанию — изумруд)
   const tParam = new URLSearchParams(location.search).get('theme');
+  // дефолты темы (напр. палитра дресс-кода из цветов приглашения) — поверх базовых,
+  // но ниже сохранённых правок пользователя
+  const th0 = tParam && window.ThemeKit && ThemeKit.get(tParam);
+  if (th0 && th0.stateDefaults) Object.assign(state, JSON.parse(JSON.stringify(th0.stateDefaults)));
+
+  const m = /(?:data|edit)=([^&]+)/.exec(location.hash);
+  if (m) { try { state = Object.assign(state, decodeState(m[1])); } catch (e) {} }
   if (tParam) state.theme = tParam;
 
   function encodeState(s){ return btoa(unescape(encodeURIComponent(JSON.stringify(s)))); }

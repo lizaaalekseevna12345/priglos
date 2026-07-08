@@ -60,7 +60,8 @@
   <script>
     const themeId = new URLSearchParams(location.search).get('theme') || 'emerald';
     const theme = ThemeKit.get(themeId);
-    const state = Object.assign({}, TPLV2.defaultState, { theme: themeId });
+    // только тема — остальные дефолты (и палитру дресс-кода темы) подставит render
+    const state = { theme: themeId };
     document.querySelector('.pv-tag').textContent = 'Шаблон · ' + (theme.name || 'Свадьба');
     document.querySelector('.pv-create').href = 'constructor.html?theme=' + encodeURIComponent(themeId);
     const root = document.getElementById('preview');

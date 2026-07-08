@@ -7,9 +7,11 @@
   const root = document.getElementById('invite');
   root.innerHTML = TPLV2.markup();
 
-  let state = JSON.parse(JSON.stringify(TPLV2.defaultState));
+  // только данные из ссылки — дефолты (и stateDefaults темы, напр. палитра дресс-кода)
+  // подставит сам render; иначе полная копия defaultState перебивала бы палитру темы
+  let state = {};
   const m = /data=([^&]+)/.exec(location.hash);
-  if (m) { try { state = Object.assign(state, decodeState(m[1])); } catch (e) {} }
+  if (m) { try { state = decodeState(m[1]) || {}; } catch (e) {} }
 
   const theme = (window.ThemeKit && ThemeKit.get(state.theme || 'emerald')) || { decor: {}, envelope: '' };
 
