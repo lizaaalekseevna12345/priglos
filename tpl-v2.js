@@ -339,9 +339,17 @@
     const starsEl = container.querySelector('[data-stars]');
     if (starsEl && wants('stars') && A && A.fallingStars) A.fallingStars(starsEl);
 
-    // проявление контента: на «живых» страницах — по скроллу/стаггером, в конструкторе — сразу
-    if (opts.animate && A && A.scrollReveal) A.scrollReveal(container);
-    else container.querySelectorAll('[data-reveal]').forEach((e) => e.classList.add('is-in'));
+    // проявление контента: по скроллу проявляется ТОЛЬКО программа дня (стаггер),
+    // всё остальное подгружено сразу; в конструкторе — тоже всё сразу
+    if (opts.animate && A && A.scrollReveal) {
+      // всё, что не относится к программе дня, показываем немедленно
+      container.querySelectorAll('[data-reveal]').forEach((e) => {
+        if (!e.closest('[data-timeline]')) e.classList.add('is-in');
+      });
+      A.scrollReveal(container); // проявит по скроллу оставшееся — пункты программы дня
+    } else {
+      container.querySelectorAll('[data-reveal]').forEach((e) => e.classList.add('is-in'));
+    }
     return container;
   }
 
