@@ -1,4 +1,8 @@
 (function () {
+  // приглашение всегда открывается сверху — иначе браузер восстанавливает прокрутку
+  // на середину, и «Программа дня» проявляется без анимации (уже в зоне видимости)
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
   function decodeState(str) { return JSON.parse(decodeURIComponent(escape(atob(str)))); }
   const root = document.getElementById('invite');
   root.innerHTML = TPLV2.markup();
