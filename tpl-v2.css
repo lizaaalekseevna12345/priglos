@@ -268,7 +268,7 @@
 .v2-root[data-theme="burgundy"] .olv-scratch{left:25.5%;top:4.6%;width:48.5%;height:11.4%;}
 
 /* ── INVITATION (конверт с каллами) ── */
-.v2-root[data-theme="burgundy"] .olv-invtitle{left:6%;top:20.9%;width:88%;font-size:5cqw;color:#f4ecdb;text-shadow:0 1px 6px rgba(0,0,0,.35);}
+.v2-root[data-theme="burgundy"] .olv-invtitle{left:6%;top:22.4%;width:88%;font-size:5cqw;color:#f4ecdb;text-shadow:0 1px 6px rgba(0,0,0,.35);}
 .v2-root[data-theme="burgundy"] .olv-invite{left:28%;top:26.1%;width:44%;font-size:2.25cqw;line-height:1.34;color:#5c1620;}
 .v2-root[data-theme="burgundy"] .olv-ph-1{left:14%;top:28%;width:36%;transform:rotate(-5deg);}
 .v2-root[data-theme="burgundy"] .olv-ph-2{left:52%;top:30.3%;width:36%;transform:rotate(6deg);}
