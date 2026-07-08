@@ -1,0 +1,37 @@
+/* ░░░ Интро-конверт (CSS-заглушка; заменится видео позже) ░░░ */
+.env-ov{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%,#26301a,#141a0d);transition:opacity .6s ease;cursor:pointer;}
+.env-ov.is-gone{opacity:0;pointer-events:none;}
+.env-video{max-width:100%;max-height:100%;}
+
+.env{position:relative;width:300px;height:198px;perspective:900px;}
+/* тело конверта */
+.env__back{position:absolute;inset:0;background:linear-gradient(180deg,#f2ecd6,#e7dfc2);border-radius:8px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);}
+.env__body{position:absolute;inset:0;border-radius:8px;overflow:hidden;}
+.env__body::before{content:'';position:absolute;left:0;bottom:0;width:100%;height:100%;
+  background:linear-gradient(180deg,#efe8cf,#ddd3b0);
+  clip-path:polygon(0 100%,50% 38%,100% 100%);}
+.env__body::after{content:'';position:absolute;left:0;top:0;width:50%;height:100%;
+  background:linear-gradient(120deg,#ece4c9,#e2d8b6);clip-path:polygon(0 0,0 100%,100% 100%);opacity:.6;}
+/* карточка-приглашение */
+.env__card{position:absolute;left:50%;top:50%;width:230px;height:150px;transform:translate(-50%,-46%);
+  background:linear-gradient(180deg,#fffdf6,#f7f1de);border:1px solid #d8cda3;border-radius:6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 8px 22px rgba(0,0,0,.18);z-index:2;transition:transform 1s cubic-bezier(.2,.8,.25,1);}
+.env__mono{font-family:'Jun',serif;font-size:26px;color:#b6a06a;}
+.env__t{font-family:'Passions','Jun',cursive;font-size:30px;color:#2c3318;}
+/* клапан */
+.env__flap{position:absolute;left:0;top:0;width:100%;height:62%;transform-origin:top center;z-index:4;
+  background:linear-gradient(180deg,#efe7cd,#e3d9b6);clip-path:polygon(0 0,100% 0,50% 100%);
+  transition:transform .7s ease;box-shadow:0 2px 6px rgba(0,0,0,.12);}
+.env__hint{position:absolute;left:0;right:0;bottom:-40px;text-align:center;color:#cfd2b8;
+  font-family:'Jun',serif;font-size:13px;letter-spacing:.16em;opacity:.85;animation:envHint 1.6s ease-in-out infinite;}
+@keyframes envHint{0%,100%{opacity:.5;}50%{opacity:1;}}
+
+/* открытие */
+.env-ov.is-open .env__flap{transform:rotateX(180deg);z-index:1;}
+.env-ov.is-open .env__card{transform:translate(-50%,-150%);box-shadow:0 26px 50px rgba(0,0,0,.4);}
+.env-ov.is-open .env__hint{opacity:0;}
+
+@media (prefers-reduced-motion: reduce){ .env-ov{display:none;} }

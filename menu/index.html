@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#4A3F35" />
+  <title>Домашнее меню · nick & liza</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- HERO -->
+    <header class="hero">
+      <img class="hero__img" src="../assets/menu/hero.jpg" alt="Домашнее меню — nick & liza edition" />
+      <button class="hero__cta" id="cta" aria-label="Смотреть меню"></button>
+    </header>
+
+    <!-- ПЛАВАЮЩАЯ ПЛАШКА (marquee) -->
+    <div class="ribbon" id="ribbon">
+      <div class="ribbon__track" id="ribbonTrack"></div>
+    </div>
+
+    <!-- КАТЕГОРИИ -->
+    <nav class="cats" id="cats"></nav>
+
+    <!-- ЗАМЕТКА КАТЕГОРИИ -->
+    <div class="note" id="note"></div>
+
+    <!-- СЕТКА БЛЮД -->
+    <main class="grid" id="grid"></main>
+
+    <footer class="foot">nick &amp; liza edition · сделано с любовью</footer>
+  </div>
+
+  <!-- КАРТОЧКА БЛЮДА -->
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <div class="sheet__backdrop" id="sheetBackdrop"></div>
+    <div class="sheet__card">
+      <div class="sheet__grab"></div>
+      <div class="sheet__img"><img id="sheetImg" alt="" /></div>
+      <div class="sheet__body">
+        <div class="sheet__cat" id="sheetCat"></div>
+        <h2 class="sheet__name" id="sheetName"></h2>
+        <p class="sheet__desc" id="sheetDesc"></p>
+        <div class="sheet__pre" id="sheetPre">⏰ Готовится по предварительному заказу</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

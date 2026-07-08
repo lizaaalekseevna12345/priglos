@@ -1,0 +1,10 @@
+/* ░░░ Локальные шрифты (грузятся офлайн, не зависят от Google Fonts) ░░░ */
+@font-face{font-family:'Jun';        src:url('assets/fonts/Jun_Regular.otf') format('opentype');             font-weight:400;font-display:swap;}
+@font-face{font-family:'Passions';   src:url('assets/fonts/PassionsConflictRUS-Regular.otf') format('opentype');font-weight:400;font-display:swap;}
+@font-face{font-family:'MorningBreeze';src:url('assets/fonts/MorningBreeze-Bold.otf') format('opentype');     font-weight:700;font-display:swap;}
+@font-face{font-family:'MakanHati';  src:url('assets/fonts/MakanHatiCyrillic.otf') format('opentype');        font-weight:400;font-display:swap;}
+@font-face{font-family:'MolliWrites';src:url('assets/fonts/MolliWrites-Script.otf') format('opentype');       font-weight:400;font-display:swap;}
+@font-face{font-family:'Kurochka';   src:url('assets/fonts/Kurochkalapkoi.ttf') format('truetype');           font-weight:400;font-display:swap;}
+@font-face{font-family:'Overdoze';   src:url('assets/fonts/overdozesans.otf') format('opentype');             font-weight:400;font-display:swap;}
+@font-face{font-family:'Pixeloid';   src:url('assets/fonts/PixeloidMono.otf') format('opentype');             font-weight:400;font-display:swap;}
+@font-face{font-family:'HelveticaR'; src:url('assets/fonts/helvetica_regular.otf') format('opentype');         font-weight:400;font-display:swap;}

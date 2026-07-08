@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Онлайн-приглашения для ваших событий</title>
+  <meta name="description" content="Современные онлайн-приглашения для любого праздника. Выберите шаблон, добавьте фото и отправьте ссылку гостям." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ░░░ HEADER ░░░ -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a href="#top" class="logo">priglos<span>.</span></a>
+
+      <nav class="nav" id="nav">
+        <a href="#templates" class="nav__link">Шаблоны</a>
+        <a href="#advantages" class="nav__link">Преимущества</a>
+        <a href="#reviews" class="nav__link">Отзывы</a>
+        <a href="#faq" class="nav__link">Вопросы</a>
+        <a href="#templates" class="btn btn--dark btn--sm js-choose">Выбрать шаблон</a>
+      </nav>
+
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ░░░ HERO ░░░ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="eyebrow eyebrow--center">Праздник начинается здесь</p>
+      <h1 class="hero__title">Современные приглашения<br />для любого праздника</h1>
+      <p class="hero__subtitle">Выберите шаблон, добавьте фото и отправьте ссылку гостям</p>
+
+      <div class="hero__fan" aria-hidden="true">
+        <div class="fan-card fan-card--1"></div>
+        <div class="fan-card fan-card--2"></div>
+        <div class="fan-card fan-card--3"></div>
+        <div class="fan-card fan-card--4"></div>
+        <div class="fan-card fan-card--5"></div>
+      </div>
+
+      <a href="#templates" class="btn btn--dark hero__cta js-choose">Выбрать шаблон</a>
+    </div>
+  </section>
+
+  <!-- ░░░ TEMPLATES ░░░ -->
+  <section class="section templates" id="templates">
+    <div class="container">
+      <div class="tag">Шаблоны</div>
+      <h2 class="section__title">Выберите стиль. Добавьте СВОЮ историю.<br />Поделитесь за несколько минут.</h2>
+      <p class="section__subtitle">Персональный сайт вашего события с красивым дизайном.</p>
+
+      <p class="filters__label">Выберите категорию</p>
+      <div class="filters filters--wrap" data-group="category">
+        <button class="pill pill--soft is-active" data-cat="all">Все</button>
+        <button class="pill pill--soft" data-cat="animated">Анимированные</button>
+        <button class="pill pill--soft" data-cat="elegant">Нарисованные</button>
+        <button class="pill pill--soft" data-cat="modern">Современные</button>
+        <button class="pill pill--soft" data-cat="bright">Яркие</button>
+        <button class="pill pill--soft" data-cat="fairy">Сказочные</button>
+        <button class="pill pill--soft" data-cat="minimal">Минималистичные</button>
+        <button class="pill pill--soft" data-cat="premium">Премиальные</button>
+      </div>
+
+      <div class="cards">
+        <article class="card card--feature" data-event="wedding" data-cat="animated" data-theme="olive">
+          <div class="card__preview card__preview--img" style="background-image:url('assets/themes/olive/cover.jpg')"></div>
+          <div class="card__head">
+            <h3 class="card__title">Оливковая классика</h3>
+            <span class="price">1399 ₽</span>
+          </div>
+          <p class="card__text">Элегантный свадебный шаблон в благородных оливковых и молочных оттенках.</p>
+          <span class="chip">Анимированные</span>
+        </article>
+
+        <!-- серые блоки-плейсхолдеры под будущие шаблоны -->
+        <article class="card" data-event="wedding" data-cat="elegant">
+          <div class="card__preview">
+            <span class="ph"></span><span class="ph"></span>
+          </div>
+          <div class="card__head">
+            <h3 class="card__title">История любви</h3>
+            <span class="price">999 ₽</span>
+          </div>
+          <p class="card__text">Шаблон с акцентом на ваши воспоминания, совместные фотографии и самые важные моменты вашей истории.</p>
+          <span class="chip">Нарисованные</span>
+        </article>
+
+        <article class="card" data-event="wedding" data-cat="bright">
+          <div class="card__preview">
+            <span class="ph"></span><span class="ph"></span>
+          </div>
+          <div class="card__head">
+            <h3 class="card__title">Краски любви</h3>
+            <span class="price">999 ₽</span>
+          </div>
+          <p class="card__text">Сочная палитра, цветы и солнечное настроение — для пар, которые хотят яркую и жизнерадостную свадьбу.</p>
+          <span class="chip">Яркие</span>
+        </article>
+
+        <article class="card" data-event="wedding" data-cat="minimal">
+          <div class="card__preview">
+            <span class="ph"></span><span class="ph"></span>
+          </div>
+          <div class="card__head">
+            <h3 class="card__title">Холст любви</h3>
+            <span class="price">999 ₽</span>
+          </div>
+          <p class="card__text">Для пар, которые любят красоту в деталях и хотят превратить своё приглашение в настоящее произведение искусства.</p>
+          <span class="chip">Минималистичные</span>
+        </article>
+
+        <article class="card card--more" data-event="wedding" data-cat="bright">
+          <div class="card__preview">
+            <span class="ph"></span><span class="ph"></span>
+          </div>
+          <div class="card__head">
+            <h3 class="card__title">Летний сад</h3>
+            <span class="price">999 ₽</span>
+          </div>
+          <p class="card__text">Зелень, полевые цветы и тёплый свет — лёгкая и нежная свадьба на природе.</p>
+          <span class="chip">Яркие</span>
+        </article>
+
+        <article class="card card--more" data-event="wedding" data-cat="fairy">
+          <div class="card__preview">
+            <span class="ph"></span><span class="ph"></span>
+          </div>
+          <div class="card__head">
+            <h3 class="card__title">Сказочная свадьба</h3>
+            <span class="price">999 ₽</span>
+          </div>
+          <p class="card__text">Воздушные иллюстрации и волшебная атмосфера для романтичной свадьбы как из сказки.</p>
+          <span class="chip">Сказочные</span>
+        </article>
+
+        <article class="card card--more" data-event="wedding" data-cat="premium">
+          <div class="card__preview">
+            <span class="ph"></span><span class="ph"></span>
+          </div>
+          <div class="card__head">
+            <h3 class="card__title">Премиальная классика</h3>
+            <span class="price">999 ₽</span>
+          </div>
+          <p class="card__text">Сдержанная роскошь, благородная типографика и продуманные детали для торжественной свадьбы.</p>
+          <span class="chip">Премиальные</span>
+        </article>
+      </div>
+
+      <div class="center">
+        <button class="btn btn--ghost" id="showMore">Показать еще</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ ADVANTAGES ░░░ -->
+  <section class="section advantages" id="advantages">
+    <div class="container advantages__top">
+      <div class="advantages__intro">
+        <div class="tag">Преимущества</div>
+        <h2 class="section__title section__title--left">Приглашения<br />нового поколения</h2>
+        <p class="section__subtitle section__subtitle--left">Создавайте красивые онлайн-приглашения, которые гости действительно открывают и читают.</p>
+        <a href="#templates" class="btn btn--dark js-choose">Выбрать шаблон</a>
+      </div>
+
+      <div class="phone" aria-hidden="true">
+        <div class="phone__frame">
+          <div class="phone__notch"></div>
+          <div class="phone__screen"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container features">
+      <div class="feature">
+        <img class="feature__icon" src="assets/icon-envelope.png" alt="" loading="lazy" width="72" height="72" />
+        <h3 class="feature__title">Красивые дизайны</h3>
+        <p class="feature__text">Десятки готовых шаблонов для вашей свадьбы — на любой вкус и стиль.</p>
+      </div>
+      <div class="feature">
+        <img class="feature__icon" src="assets/icon-clock.png" alt="" loading="lazy" width="72" height="72" />
+        <h3 class="feature__title">Мгновенные изменения</h3>
+        <p class="feature__text">Меняйте текст, фото, дату и адрес в пару кликов, пока собираете приглашение — всё под рукой.</p>
+      </div>
+      <div class="feature">
+        <img class="feature__icon" src="assets/icon-people.png" alt="" loading="lazy" width="72" height="72" />
+        <h3 class="feature__title">Удобно для гостей</h3>
+        <p class="feature__text">Приглашение открывается по ссылке на любом телефоне без скачивания приложений.</p>
+      </div>
+      <div class="feature">
+        <img class="feature__icon" src="assets/icon-phone.png" alt="" loading="lazy" width="72" height="72" />
+        <h3 class="feature__title">Всё в одном месте</h3>
+        <p class="feature__text">Дата, программа мероприятия, дресс-код и все важные детали — в одном месте.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ COMPARISON ░░░ -->
+  <section class="section compare">
+    <div class="container compare__inner">
+      <h2 class="section__title">Создайте приглашение<br />сами — без ожиданий<br />и переплат</h2>
+      <p class="section__subtitle">Настраивайте дизайн, вносите правки и<br class="br-desktop" />отправляйте гостям за считанные минуты.</p>
+
+      <div class="table">
+        <div class="table__row table__row--head">
+          <div class="table__cell"></div>
+          <div class="table__cell table__cell--th">Заказ у дизайнера</div>
+          <div class="table__cell table__cell--th">Наш сервис</div>
+        </div>
+        <div class="table__row">
+          <div class="table__cell table__cell--key">Стоимость</div>
+          <div class="table__cell">От 5 000 – 20 000 ₽</div>
+          <div class="table__cell">От 999 ₽</div>
+        </div>
+        <div class="table__row">
+          <div class="table__cell table__cell--key">Скорость</div>
+          <div class="table__cell">5 дней и больше</div>
+          <div class="table__cell">10 минут</div>
+        </div>
+        <div class="table__row">
+          <div class="table__cell table__cell--key">Правки</div>
+          <div class="table__cell">Ограниченное количество</div>
+          <div class="table__cell">Без ограничений в любое время</div>
+        </div>
+        <div class="table__row">
+          <div class="table__cell table__cell--key">Выбор дизайна</div>
+          <div class="table__cell">Зависит от дизайнера</div>
+          <div class="table__cell">Десятки готовых шаблонов</div>
+        </div>
+      </div>
+
+      <div class="center">
+        <a href="#templates" class="btn btn--dark js-choose">Выбрать шаблон</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ REVIEWS ░░░ -->
+  <section class="section reviews" id="reviews">
+    <div class="container">
+      <div class="tag tag--center">Отзывы</div>
+      <h2 class="section__title">Не верьте нам на слово — посмотрите,<br />что говорят наши клиенты</h2>
+      <p class="section__subtitle">Более 1 000 счастливых праздников и тысячи приглашённых гостей.</p>
+    </div>
+
+    <div class="carousel">
+      <button class="carousel__arrow carousel__arrow--prev" id="prev" aria-label="Назад">‹</button>
+
+      <div class="carousel__track" id="track">
+        <article class="review review--g1">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">Приглашение получилось настолько красивым, что гости спрашивали, кто его делал. Всё настроили буквально за вечер.</p>
+            <p class="review__author">Анна и Максим</p>
+            <span class="chip chip--light">Свадьба</span>
+          </div>
+        </article>
+
+        <article class="review review--g2">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">Мы думали заказывать дизайнера, но сделали всё сами. Получилось именно так, как мы представляли.</p>
+            <p class="review__author">Алина и Артём</p>
+            <span class="chip chip--light">Свадьба</span>
+          </div>
+        </article>
+
+        <article class="review review--g3">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">Когда планы изменились, я просто обновила информацию в приглашении. Ничего пересылать заново не пришлось.</p>
+            <p class="review__author">Ксения</p>
+            <span class="chip chip--light">День рождения</span>
+          </div>
+        </article>
+
+        <article class="review review--g4">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">Мы хотели сохранить интригу до самого праздника, и приглашение идеально передало эту атмосферу ожидания.</p>
+            <p class="review__author">Полина и Сергей</p>
+            <span class="chip chip--light">Гендер-пати</span>
+          </div>
+        </article>
+
+        <article class="review review--g5">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">За весь период подготовки к свадьбе это был самый простой сервис, которым мы пользовались.</p>
+            <p class="review__author">Светлана и Алексей</p>
+            <span class="chip chip--light">Свадьба</span>
+          </div>
+        </article>
+
+        <article class="review review--g6">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">Сделала приглашение буквально за полчаса. Получилось как маленький персональный сайт про мой праздник.</p>
+            <p class="review__author">Екатерина</p>
+            <span class="chip chip--light">День рождения</span>
+          </div>
+        </article>
+
+        <article class="review review--g7">
+          <div class="review__shade"></div>
+          <div class="review__body">
+            <p class="review__quote">Все родители сразу подтвердили участие через сайт. Никаких бесконечных сообщений в родительском чате.</p>
+            <p class="review__author">Елена, мама Артёма</p>
+            <span class="chip chip--light">Детский праздник</span>
+          </div>
+        </article>
+      </div>
+
+      <button class="carousel__arrow carousel__arrow--next" id="next" aria-label="Вперёд">›</button>
+    </div>
+
+    <div class="center center--gap">
+      <a href="#templates" class="btn btn--dark js-choose">Выбрать шаблон</a>
+    </div>
+  </section>
+
+  <!-- ░░░ FAQ ░░░ -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <h2 class="section__title">Вопросы? Ответы.</h2>
+
+      <div class="faq__list" id="faqList">
+        <div class="faq__item is-open">
+          <button class="faq__q" data-answer="0">Как пользоваться платформой?</button>
+          <div class="faq__panel"><p class="faq__text"></p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-answer="1">Можно создать приглашение не только на свадьбу?</button>
+          <div class="faq__panel"><p class="faq__text"></p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-answer="2">А если я ничего не знаю о дизайне?</button>
+          <div class="faq__panel"><p class="faq__text"></p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-answer="3">Можно ли вносить изменения в приглашение?</button>
+          <div class="faq__panel"><p class="faq__text"></p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" data-answer="4">Как гости отвечают на приглашение?</button>
+          <div class="faq__panel"><p class="faq__text"></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ░░░ FOOTER ░░░ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <h2 class="footer__title">Онлайн-<br />приглашения<br />для ваших<br />событий</h2>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__head">Нужна помощь?<br />Мы на связи!</p>
+        <a href="mailto:hello@priglos.com" class="footer__link">hello@priglos.com</a>
+      </div>
+
+      <div class="footer__col">
+        <p class="footer__head">О нас</p>
+        <p class="footer__muted">Информация</p>
+        <a href="#" class="footer__link">Контакты</a>
+        <a href="#" class="footer__link">Политика конфиденциальности</a>
+        <a href="#" class="footer__link">Пользовательское соглашение</a>
+        <a href="#" class="footer__link">Возврат средств</a>
+      </div>
+
+      <div class="footer__cta">
+        <div class="footer__cta-text">
+          <h3 class="footer__cta-title">Пригласите гостей<br />всего за 10 минут</h3>
+          <p class="footer__cta-sub">Выберите шаблон, добавьте фото и детали события, а затем отправьте гостям одну ссылку.</p>
+          <a href="#templates" class="btn btn--dark js-choose">Выбрать шаблон</a>
+        </div>
+        <img class="footer__cta-img" src="assets/footer-couple.png" alt="Счастливая пара" loading="lazy" width="170" height="159" />
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© 2026 priglos. Все права защищены.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

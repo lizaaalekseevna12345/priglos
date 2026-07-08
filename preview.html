@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Предпросмотр шаблона — priglos</title>
+  <!-- предзагрузка шрифтов и задника шаблона: без мигания шрифтов и быстрее первый рендер -->
+  <link rel="preload" href="assets/fonts/Jun_Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/fonts/PassionsConflictRUS-Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/fonts/helvetica_regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/themes/olive/site.jpg" as="image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="tpl-v2.css" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#141414;background:#f4f4f5;}
+    .pv-header{position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#fff;border-bottom:1px solid #e6e6e6;}
+    .pv-back{color:#444;text-decoration:none;font-weight:600;font-size:15px;}
+    .pv-logo{font-weight:800;font-size:20px;}.pv-logo span{color:#bbb;}
+    .pv-main{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 64px);align-items:center;}
+    .pv-info{padding:60px;max-width:540px;margin-left:auto;}
+    .pv-tag{display:inline-block;padding:7px 16px;border:1px solid #e6e6e6;border-radius:999px;font-size:13px;font-weight:600;color:#444;margin-bottom:22px;}
+    .pv-title{font-family:'Manrope',sans-serif;font-size:clamp(30px,3.2vw,46px);font-weight:800;letter-spacing:-.01em;line-height:1.12;margin-bottom:18px;color:#222a16;}
+    .pv-sub{color:#8a8a8a;font-size:16px;line-height:1.55;margin-bottom:30px;}
+    .pv-create{display:inline-flex;align-items:center;justify-content:center;background:#2c3318;color:#fff;border:none;cursor:pointer;font-weight:700;font-size:17px;padding:17px 34px;border-radius:999px;box-shadow:0 12px 26px rgba(0,0,0,.18);text-decoration:none;transition:transform .15s;}
+    .pv-create:hover{transform:translateY(-2px);}
+    .pv-stagewrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;height:calc(100vh - 64px);}
+    .pv-phone{position:relative;height:min(780px,calc(100vh - 110px));aspect-ratio:360/780;background:#0a0a0a;border-radius:50px;padding:11px;box-shadow:0 34px 70px rgba(0,0,0,.32);}
+    .pv-notch{position:absolute;top:15px;left:50%;transform:translateX(-50%);width:108px;height:27px;background:#0a0a0a;border-radius:16px;z-index:30;}
+    .pv-screen{position:relative;height:100%;width:100%;border-radius:40px;overflow-y:auto;overflow-x:hidden;background:#1d2412;scrollbar-width:none;}
+    .pv-screen::-webkit-scrollbar{display:none;}
+    @media(max-width:900px){.pv-main{grid-template-columns:1fr;}.pv-info{order:2;padding:30px;margin:0 auto;text-align:center;}.pv-stagewrap{order:1;height:640px;}.pv-create{width:100%;}}
+  </style>
+</head>
+<body>
+  <header class="pv-header">
+    <a href="index.html" class="pv-back">← Шаблоны</a>
+    <span class="pv-logo">priglos<span>.</span></span>
+    <span style="width:80px"></span>
+  </header>
+  <main class="pv-main">
+    <div class="pv-info">
+      <span class="pv-tag">Шаблон · Свадьба «Изумруд»</span>
+      <h1 class="pv-title">Приглашение,<br />которое оживает в руках</h1>
+      <p class="pv-sub">Блёстки, падающие звёзды и таймер до даты. Замените тексты, фото и цвета, добавьте музыку — и отправьте гостям личную ссылку.</p>
+      <a href="constructor.html" class="pv-create">Создать приглашение →</a>
+    </div>
+    <div class="pv-stagewrap">
+      <div class="pv-phone"><div class="pv-notch"></div><div class="pv-screen" id="preview"></div></div>
+    </div>
+  </main>
+
+  <script src="themes.js"></script>
+  <script src="animations.js"></script>
+  <script src="tpl-v2.js"></script>
+  <script src="scratch.js"></script>
+  <script>
+    const themeId = new URLSearchParams(location.search).get('theme') || 'emerald';
+    const theme = ThemeKit.get(themeId);
+    const state = Object.assign({}, TPLV2.defaultState, { theme: themeId });
+    document.querySelector('.pv-tag').textContent = 'Шаблон · ' + (theme.name || 'Свадьба');
+    document.querySelector('.pv-create').href = 'constructor.html?theme=' + encodeURIComponent(themeId);
+    const root = document.getElementById('preview');
+    root.innerHTML = TPLV2.markup();
+    TPLV2.render(state, root, { scratch: true, animate: true, themeId });
+    TPLV2.startCountdown(root, () => state);
+    const sc = root.querySelector('[data-scratch]');
+    if (sc) ScratchEffect.init(sc, (theme.decor && theme.decor.glitter) || 'frost', {
+      radius: 24,
+      onReveal: () => {
+        if (!window.Animations) return;
+        const olv = root.querySelector('.olv');
+        if (olv) Animations.glitterBurst(olv);           // салют по обложке
+        else Animations.replayReveal(root.querySelector('.v2-hero__frame'));
+      },
+    });
+  </script>
+</body>
+</html>

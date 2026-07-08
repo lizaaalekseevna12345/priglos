@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#f6cdd9">
+<title>До нашей встречи</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+/* ─── шрифты ─── */
+@font-face{font-family:'Benzin';src:url('../assets/fonts/Benzin-ExtraBold.ttf') format('truetype');font-weight:800;font-display:swap;}
+@font-face{font-family:'Overdoze';src:url('../assets/fonts/overdozesans.otf') format('opentype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Passions';src:url('../assets/fonts/PassionsConflictRUS-Regular.otf') format('opentype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Molli';src:url('../assets/fonts/MolliWrites-Script.otf') format('opentype');font-weight:400;font-display:swap;}
+@font-face{font-family:'MakanHati';src:url('../assets/fonts/MakanHatiCyrillic.otf') format('opentype');font-weight:400;font-display:swap;}
+
+:root{
+  --pink:#ff2e74;
+  --pink-soft:#ff7bac;
+  --ink:#20222b;
+  --bg-top:#f7d3df;
+  --bg-bot:#efc4d3;
+  --card:#ffffff;
+  --muted:#9aa0ab;
+  --lock:#eef0f4;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Montserrat','Segoe UI',system-ui,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--bg-top) 0%,#f8dbe4 26%,#ffffff 60%);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+/* ─── фон: летающие сердечки ─── */
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.heart{position:absolute;bottom:-60px;width:26px;opacity:0;will-change:transform,opacity;
+  animation:floatUp linear infinite;}
+.heart svg{width:100%;height:auto;display:block;}
+@keyframes floatUp{
+  0%{transform:translateY(0) rotate(0deg) scale(.9);opacity:0;}
+  10%{opacity:.9;}
+  50%{transform:translateY(-52vh) translateX(var(--sway)) rotate(12deg) scale(1);}
+  90%{opacity:.85;}
+  100%{transform:translateY(-108vh) translateX(0) rotate(-8deg) scale(.85);opacity:0;}
+}
+
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:26px 18px 60px;}
+
+/* ─── HERO ─── */
+.hero{text-align:center;padding:8px 6px 4px;}
+.hero .lead{
+  font-family:'Benzin',sans-serif;
+  font-weight:400;
+  font-size:30px;line-height:1.05;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--ink);
+}
+.count{position:relative;margin:6px 0 2px;height:150px;display:flex;align-items:center;justify-content:center;}
+.count .num{
+  font-family:'Passions',cursive;
+  font-size:132px;line-height:1;color:var(--pink);
+  transform:rotate(-6deg);
+  text-shadow:0 4px 18px rgba(255,46,116,.28);
+}
+.count .word{
+  font-family:'Passions',cursive;
+  font-size:56px;color:var(--pink);
+  transform:rotate(-6deg);margin-left:-6px;align-self:flex-end;margin-bottom:14px;
+}
+.clock{
+  font-family:'Montserrat',sans-serif;font-weight:600;
+  font-variant-numeric:tabular-nums;letter-spacing:2px;
+  font-size:15px;color:#c76b8c;margin-top:2px;
+}
+.clock b{color:var(--pink);font-weight:700;}
+.hero.done .count .num{font-size:60px;transform:rotate(-3deg);line-height:1.1;}
+
+/* ─── MISSION ─── */
+.mission-head{
+  font-family:'Benzin',sans-serif;text-transform:uppercase;
+  text-align:center;font-size:26px;line-height:1.08;margin:26px 0 14px;letter-spacing:.4px;
+}
+.mission-head em{font-style:normal;color:var(--pink);}
+.mission-box{
+  background:var(--card);border-radius:20px;padding:18px 20px;
+  box-shadow:0 14px 30px rgba(214,120,150,.20);
+  font-size:17px;line-height:1.5;font-weight:600;text-align:center;color:#33353e;
+  border:2px solid #ffe1ea;
+}
+.ready-row{display:flex;align-items:center;justify-content:center;gap:14px;margin:22px 0 8px;}
+.ready-label{font-family:'Benzin',sans-serif;text-transform:uppercase;font-size:15px;color:#63666f;}
+.person{display:flex;flex-direction:column;align-items:center;gap:7px;}
+.chk{
+  width:58px;height:58px;border-radius:16px;background:#fff;
+  border:3px solid #ffd0df;box-shadow:0 6px 14px rgba(214,120,150,.18);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:transform .12s ease, border-color .2s;
+}
+.chk:active{transform:scale(.9);}
+.chk svg{width:40px;height:40px;stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset .35s ease;}
+.chk.on{border-color:var(--pink);}
+.chk.on svg{stroke-dashoffset:0;}
+.person .nm{font-family:'Benzin',sans-serif;text-transform:uppercase;font-size:14px;letter-spacing:.3px;}
+.person.liza .nm{color:var(--pink);}
+.person.nikita .nm{color:var(--ink);}
+
+/* ─── ACHIEVEMENTS ─── */
+.ach-card{
+  background:var(--card);border-radius:28px;margin-top:32px;padding:26px 20px 30px;
+  box-shadow:0 18px 44px rgba(214,120,150,.22);
+}
+.ach-title{
+  font-family:'Benzin',sans-serif;text-transform:uppercase;text-align:center;
+  font-size:30px;line-height:1.05;margin:0 0 22px;
+}
+.ach{display:flex;flex-direction:column;align-items:center;text-align:center;padding:14px 0;}
+.ach .art{width:112px;height:112px;display:flex;align-items:center;justify-content:center;
+  transition:transform .5s cubic-bezier(.2,1.4,.4,1);}
+.ach .art img{max-width:100%;max-height:100%;object-fit:contain;}
+.ach.locked .art img{filter:none;}
+.ach.locked .art{opacity:.9;}
+.ach .cap{margin-top:8px;font-size:14.5px;font-weight:600;color:#5f636d;max-width:270px;line-height:1.35;}
+.ach.unlocked .cap{color:#2a2c34;}
+.ach.just-unlocked .art{animation:pop .6s cubic-bezier(.2,1.5,.4,1);}
+@keyframes pop{0%{transform:scale(.3) rotate(-18deg);}60%{transform:scale(1.15) rotate(6deg);}100%{transform:scale(1) rotate(0);}}
+.ach-sep{height:1px;background:linear-gradient(90deg,transparent,#f0e2e8,transparent);margin:0 10px;}
+
+.foot{text-align:center;margin-top:26px;font-size:13px;color:#c88ba0;font-weight:600;}
+.foot .hb{color:var(--pink);}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+
+<div class="wrap">
+  <!-- HERO -->
+  <div class="hero" id="hero">
+    <div class="lead">До нашей<br>встречи осталось...</div>
+    <div class="count">
+      <span class="num" id="bigNum">30</span>
+      <span class="word" id="bigWord">дней</span>
+    </div>
+    <div class="clock" id="clock">—</div>
+  </div>
+
+  <!-- MISSION -->
+  <div class="mission-head">Наша <em>миссия</em><br>на сегодня</div>
+  <div class="mission-box" id="missionBox">…</div>
+
+  <div class="ready-row">
+    <div class="person liza">
+      <div class="chk" id="chkLiza" data-who="liza" role="button" aria-label="Лизэка готова">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M7 21 L16 30 L34 9" stroke="#ff2e74" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="nm">Лизэка</div>
+    </div>
+    <div class="ready-label">Готово?</div>
+    <div class="person nikita">
+      <div class="chk" id="chkNikita" data-who="nikita" role="button" aria-label="Никитик готов">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M7 21 L16 30 L34 9" stroke="#20222b" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="nm">Никитик</div>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="ach-card">
+    <h2 class="ach-title">Наши<br>ачивки</h2>
+    <div id="achList"></div>
+  </div>
+
+  <div class="foot">сделано с <span class="hb">♥</span> для нас двоих</div>
+</div>
+
+<script>
+/* ═══════════════ КОНФИГ ═══════════════ */
+// Месяцы в JS 0-based: 6 = июль, 7 = август
+const START = new Date(2026, 6, 7);   // 7 июля 2026 — день 1
+const MEET  = new Date(2026, 7, 5);   // 5 августа 2026 — встреча (день 30)
+const TOTAL_DAYS = 30;
+const DAY_MS = 86400000;
+
+const MISSIONS = [
+  "Улыбнись прямо сейчас и отправь мне селфи с этой улыбкой. ❤️",
+  "Сделай фотографию чего-нибудь, что сегодня напомнило тебе обо мне.",
+  "Напиши мне три слова, которыми ты бы описал наши отношения.",
+  "Включи нашу любимую песню и дослушай её до конца, представляя, что мы едем вместе.",
+  "Съешь сегодня что-нибудь вкусное и мысленно угости этим меня.",
+  "Сделай фотографию самого красивого места, которое увидишь сегодня.",
+  "Запиши короткое голосовое (до 30 секунд) о том, как прошёл твой день.",
+  "Вспомни наше первое свидание и напиши момент, который запомнился тебе больше всего.",
+  "Сделай фото неба в тот момент, когда вспомнишь обо мне.",
+  "Напиши одну вещь, которую ты хочешь сделать вместе после моего возвращения.",
+  "Отправь мне любимую фотографию, где есть ты.",
+  "Напиши пять причин, почему тебе хорошо со мной.",
+  "Сделай фото места, где тебе сейчас особенно спокойно.",
+  "Сделай сегодня кому-нибудь маленькое доброе дело и расскажи мне об этом.",
+  "Закрой глаза на минуту и представь нашу встречу после отпуска, потом опиши её тремя предложениями.",
+  "Сделай смешное селфи специально для меня.",
+  "Напиши название фильма или сериала, который мы обязательно посмотрим вместе.",
+  "Сфотографируй свою обувь и расскажи, где сегодня гулял.",
+  "Расскажи мне о самом смешном моменте сегодняшнего дня.",
+  "Запиши короткое видео (10–15 секунд), где просто улыбаешься и машешь мне.",
+  "Сделай фото предмета, который ассоциируется у тебя с нашим будущим.",
+  "Задай мне вопрос, который давно хотел задать.",
+  "Вечером посмотри на звёзды или ночное небо и подумай обо мне хотя бы минуту.",
+  "Расскажи, какая наша совместная фотография нравится тебе больше всего и почему.",
+  "Сделай фотографию своих ладоней, скоро я снова смогу держать их в своих.",
+  "Напиши три мечты, которые ты хочешь исполнить вместе со мной.",
+  "Обними сегодня кого-нибудь из близких, а одно объятие мысленно оставь для меня.",
+  "Запиши голосовое, в котором скажешь всё, что хочется сказать мне прямо сейчас.",
+  "Подготовь маленький сюрприз для нашей встречи, не рассказывай, какой. 🤫",
+  "Перед нашей встречей улыбнись своему отражению и подумай: «Мы справились. Осталось только обнять её». ❤️"
+];
+
+// Ачивки: unlock — минимальный номер дня (1..30), когда открывается
+const ACHIEVEMENTS = [
+  {img:"a01", cap:"1 день без встреч",                             unlock:1},
+  {img:"a02", cap:"3 дня без обнимашек",                           unlock:3},
+  {img:"a03", cap:"5 дней без поцелуев",                           unlock:5},
+  {img:"a04", cap:"неделя в разлуке",                              unlock:7},
+  {img:"a05", cap:"10 дней ожидания",                              unlock:10},
+  {img:"a06", cap:"14 дней без утех((",                            unlock:14},
+  {img:"a07", cap:"15 дней поддерживали связь каждый день",        unlock:15},
+  {img:"a08", cap:"отправили друг другу сообщения 20 дней подряд", unlock:20},
+  {img:"a09", cap:"25 дней в разлуке",                             unlock:25},
+  {img:"a10", cap:"осталось меньше недели до встречи",             unlock:25},
+  {img:"a11", cap:"осталось 3 дня",                                unlock:27},
+  {img:"a12", cap:"последняя ночь перед встречей",                 unlock:29}
+];
+
+/* ═══════════════ ДАТА / ДЕНЬ ═══════════════ */
+function midnight(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+
+function getState(){
+  // dev-переопределение: ?day=N
+  const p = new URLSearchParams(location.search);
+  let today = midnight(new Date());
+  if(p.has('day')){
+    const n = parseInt(p.get('day'),10);
+    today = new Date(START.getTime() + (n-1)*DAY_MS);
+    today = midnight(today);
+  }
+  const startM = midnight(START), meetM = midnight(MEET);
+  const dayNumber = Math.floor((today - startM)/DAY_MS) + 1;      // 1 в первый день
+  const daysToMeet = Math.round((meetM - today)/DAY_MS);          // 29 в первый день, 0 в день встречи
+  const bigNum = daysToMeet;                                      // честно: 29 в первый день
+  return {today, dayNumber, daysToMeet, bigNum};
+}
+
+const S = getState();
+
+/* ═══════════════ HERO / ТАЙМЕР ═══════════════ */
+function pad(n){return String(n).padStart(2,'0');}
+
+function renderHero(){
+  const hero = document.getElementById('hero');
+  const numEl = document.getElementById('bigNum');
+  const wordEl = document.getElementById('bigWord');
+
+  if(S.daysToMeet <= 0){
+    // день встречи и после
+    hero.classList.add('done');
+    numEl.textContent = S.daysToMeet === 0 ? "сегодня" : "мы вместе";
+    wordEl.textContent = "❤️";
+    document.querySelector('.hero .lead').innerHTML = "Наша встреча —";
+    return;
+  }
+  numEl.textContent = S.bigNum;
+  wordEl.textContent = wordForm(S.bigNum);
+}
+
+function wordForm(n){
+  const a = n % 100, b = n % 10;
+  if(a>=11 && a<=14) return "дней";
+  if(b===1) return "день";
+  if(b>=2 && b<=4) return "дня";
+  return "дней";
+}
+
+function tickClock(){
+  const el = document.getElementById('clock');
+  if(S.daysToMeet <= 0){ el.textContent = "♥ наконец-то вместе ♥"; return; }
+  // время до следующей полуночи — когда счётчик уменьшится
+  const now = new Date();
+  const nextMid = new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,0);
+  let s = Math.max(0, Math.floor((nextMid - now)/1000));
+  const h = Math.floor(s/3600); s%=3600;
+  const m = Math.floor(s/60); s%=60;
+  el.innerHTML = `до нового дня <b>${pad(h)}:${pad(m)}:${pad(s)}</b>`;
+}
+
+/* ═══════════════ МИССИЯ ═══════════════ */
+function renderMission(){
+  const idx = Math.min(Math.max(S.dayNumber,1), TOTAL_DAYS) - 1;
+  document.getElementById('missionBox').textContent = MISSIONS[idx];
+  // чекбоксы — сохраняются на день
+  const key = 'ready_day'+S.dayNumber;
+  const saved = JSON.parse(localStorage.getItem(key) || '{}');
+  ['liza','nikita'].forEach(who=>{
+    const box = document.getElementById(who==='liza'?'chkLiza':'chkNikita');
+    if(saved[who]) box.classList.add('on');
+    box.addEventListener('click', ()=>{
+      box.classList.toggle('on');
+      const cur = JSON.parse(localStorage.getItem(key) || '{}');
+      cur[who] = box.classList.contains('on');
+      localStorage.setItem(key, JSON.stringify(cur));
+      if(box.classList.contains('on')) haptic();
+    });
+  });
+}
+
+/* ═══════════════ АЧИВКИ ═══════════════ */
+function renderAch(){
+  const list = document.getElementById('achList');
+  const seenKey = 'ach_seen';
+  const seen = JSON.parse(localStorage.getItem(seenKey) || '[]');
+  const nowSeen = [...seen];
+
+  ACHIEVEMENTS.forEach((a,i)=>{
+    if(i>0){ const sep=document.createElement('div'); sep.className='ach-sep'; list.appendChild(sep); }
+    const unlocked = S.dayNumber >= a.unlock;
+    const row = document.createElement('div');
+    row.className = 'ach ' + (unlocked ? 'unlocked' : 'locked');
+    const src = unlocked ? `../assets/ach/${a.img}.png` : `../assets/ach/lock.png`;
+    row.innerHTML = `<div class="art"><img src="${src}" alt=""></div><div class="cap">${a.cap}</div>`;
+    // анимация для только что открытых
+    if(unlocked && !seen.includes(a.img)){
+      row.classList.add('just-unlocked');
+      nowSeen.push(a.img);
+    }
+    list.appendChild(row);
+  });
+  localStorage.setItem(seenKey, JSON.stringify(nowSeen));
+}
+
+/* ═══════════════ ФОН: СЕРДЕЧКИ ═══════════════ */
+function spawnHearts(){
+  const box = document.getElementById('hearts');
+  // рисованное сердечко в стиле референса: розовая заливка + коралловая «нарисованная» обводка + мягкая тень-сдвиг
+  const svg = (fill,stroke)=>`<svg viewBox="0 0 100 96" xmlns="http://www.w3.org/2000/svg">
+    <path d="M50 86 C 16 60, 6 40, 6 26 C 6 13, 17 6, 28 6 C 38 6, 46 14, 50 22 C 54 14, 62 6, 72 6 C 83 6, 94 13, 94 26 C 94 40, 84 60, 50 86 Z"
+      fill="${fill}" transform="translate(-3.5,4.5)" opacity=".55"/>
+    <path d="M50 86 C 16 60, 6 40, 6 26 C 6 13, 17 6, 28 6 C 38 6, 46 14, 50 22 C 54 14, 62 6, 72 6 C 83 6, 94 13, 94 26 C 94 40, 84 60, 50 86 Z"
+      fill="${fill}" stroke="${stroke}" stroke-width="7" stroke-linejoin="round"/>
+  </svg>`;
+  const palette = [
+    ['#f9bcd0','#ff5b60'],
+    ['#fbc9d9','#ff6d84'],
+    ['#f7afca','#ff5470']
+  ];
+  const N = 15;
+  for(let i=0;i<N;i++){
+    const h = document.createElement('div');
+    h.className='heart';
+    const pal = palette[Math.floor(Math.random()*palette.length)];
+    h.innerHTML = svg(pal[0], pal[1]);
+    const w = 18 + Math.random()*30;
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.width = w + 'px';
+    h.style.setProperty('--sway', (Math.random()*64-32)+'px');
+    const dur = 11 + Math.random()*11;
+    h.style.animationDuration = dur+'s';
+    h.style.animationDelay = (-Math.random()*dur)+'s';
+    h.style.opacity = (.5 + Math.random()*.4).toFixed(2);
+    box.appendChild(h);
+  }
+}
+
+/* ═══════════════ TELEGRAM / ХАПТИК ═══════════════ */
+function haptic(){
+  try{ window.Telegram?.WebApp?.HapticFeedback?.impactOccurred('light'); }catch(e){}
+}
+function initTG(){
+  try{
+    const tg = window.Telegram?.WebApp;
+    if(tg){ tg.ready(); tg.expand(); tg.setHeaderColor?.('#f6cdd9'); tg.setBackgroundColor?.('#f7d3df'); }
+  }catch(e){}
+}
+
+/* ═══════════════ СТАРТ ═══════════════ */
+initTG();
+spawnHearts();
+renderHero();
+renderMission();
+renderAch();
+tickClock();
+setInterval(tickClock, 1000);
+
+// авто-обновление в полночь (перезагрузка, чтобы открылись новые миссия/ачивки)
+(function midnightReload(){
+  const now = new Date();
+  const nextMid = new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,2);
+  setTimeout(()=>location.reload(), nextMid - now);
+})();
+</script>
+</body>
+</html>

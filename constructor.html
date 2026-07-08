@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Конструктор приглашения — priglos</title>
+  <!-- предзагрузка шрифтов и задника шаблона: без мигания шрифтов и быстрее первый рендер -->
+  <link rel="preload" href="assets/fonts/Jun_Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/fonts/PassionsConflictRUS-Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/fonts/helvetica_regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/themes/olive/site.jpg" as="image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="tpl-v2.css" />
+  <link rel="stylesheet" href="constructor.css" />
+</head>
+<body>
+  <header class="cstr-header">
+    <a href="index.html" class="cstr-back">← Шаблоны</a>
+    <span class="cstr-logo">priglos<span>.</span></span>
+    <button class="cstr-share-btn" id="shareBtn">Создать ссылку</button>
+  </header>
+
+  <main class="cstr">
+    <section class="cstr-form" id="form">
+      <div class="cstr-blocks-bar">
+        <span>Блоки приглашения</span>
+        <button id="editBlocks" type="button">Изменить блоки</button>
+      </div>
+
+      <!-- ВСЕГДА -->
+      <div class="grp">
+        <h3 class="grp__title">Пара и дата</h3>
+        <label class="fld"><span>Имя 1</span><input data-field="name1" type="text" placeholder="Диана" /></label>
+        <label class="fld"><span>Имя 2</span><input data-field="name2" type="text" placeholder="Игорь" /></label>
+        <label class="fld"><span>Дата свадьбы (счётчик считается сам)</span><input data-field="date" type="datetime-local" /></label>
+        <div class="color-row">
+          <div class="color-fld"><span>Цвет заголовка</span><button type="button" class="color-sw" data-color="titleColor" data-default="#3c402f"></button></div>
+          <div class="color-fld"><span>Цвет имён</span><button type="button" class="color-sw" data-color="nameColor" data-default="#3c402f"></button></div>
+          <div class="color-fld"><span>Цвет даты</span><button type="button" class="color-sw" data-color="dateColor" data-default="#5a5e49"></button></div>
+        </div>
+        <div class="size-row">
+          <label class="size-fld"><span>Размер имён</span><input type="range" min="5" max="14" step="0.1" data-size="nameSize" data-default="10.2" /></label>
+          <label class="size-fld"><span>Размер даты</span><input type="range" min="6" max="18" step="0.1" data-size="dateSize" data-default="13" /></label>
+        </div>
+        <div class="fld"><span>Фото на обложке (под текстом)</span><div class="up" data-up="hero"></div></div>
+      </div>
+
+      <div class="grp">
+        <h3 class="grp__title">Приглашение</h3>
+        <label class="fld"><span>Заголовок (Enter — новая строка)</span><textarea data-field="inviteTitle" rows="2"></textarea></label>
+        <label class="fld"><span>Текст</span><textarea data-field="inviteText" rows="3"></textarea></label>
+        <div class="size-row">
+          <label class="size-fld"><span>Размер заголовка</span><input type="range" min="2.5" max="7.5" step="0.1" data-size="inviteTitleSize" data-default="5.2" /></label>
+          <label class="size-fld"><span>Размер текста</span><input type="range" min="1.8" max="3.6" step="0.1" data-size="inviteTextSize" data-default="2.45" /></label>
+        </div>
+        <div class="up-row">
+          <div><span class="fld__lbl">Фото 1</span><div class="up up--sm" data-up="invite1"></div></div>
+          <div><span class="fld__lbl">Фото 2</span><div class="up up--sm" data-up="invite2"></div></div>
+        </div>
+      </div>
+
+      <!-- ОПЦИОНАЛЬНЫЕ БЛОКИ -->
+      <div class="grp" data-block="venue">
+        <h3 class="grp__title">📍 Место проведения</h3>
+        <label class="fld"><span>Название площадки</span><input data-field="venueName" type="text" /></label>
+        <label class="fld"><span>Адрес</span><input data-field="venueAddress" type="text" /></label>
+        <label class="fld"><span>Ссылка на карты (кнопка «Посмотреть на карте»)</span><input data-field="mapsUrl" type="url" placeholder="https://yandex.ru/maps/..." /></label>
+        <div class="fld"><span>Фото места</span><div class="up" data-up="venue"></div></div>
+      </div>
+
+      <div class="grp" data-block="timeline">
+        <h3 class="grp__title">🕐 Программа вечера</h3>
+        <div class="prog" id="progList"></div>
+        <button class="btn-add" id="progAdd">+ Добавить пункт</button>
+      </div>
+
+      <div class="grp" data-block="dresscode">
+        <h3 class="grp__title">👗 Дресс-код</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="dressText" rows="2"></textarea></label>
+        <span class="fld__lbl">Палитра (нажмите на образец)</span>
+        <div class="dress-edit" id="dressList"></div>
+        <button class="btn-add" id="dressAdd">+ Добавить цвет</button>
+      </div>
+
+      <div class="grp" data-block="details">
+        <h3 class="grp__title">✦ Детали</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="detailsText" rows="3"></textarea></label>
+        <div class="fld"><span>Фото</span><div class="up" data-up="details"></div></div>
+      </div>
+
+      <div class="grp" data-block="gifts">
+        <h3 class="grp__title">🎁 Пожелания</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="giftsText" rows="3"></textarea></label>
+        <div class="fld"><span>Фото (полароид)</span><div class="up" data-up="gifts"></div></div>
+      </div>
+
+      <div class="grp" data-block="story">
+        <h3 class="grp__title">❤ Наша история</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="storyText" rows="3"></textarea></label>
+        <div class="fld"><span>Фото (полароид)</span><div class="up" data-up="story"></div></div>
+      </div>
+
+      <div class="grp" data-block="transport">
+        <h3 class="grp__title">🚌 Трансфер</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="transportText" rows="3"></textarea></label>
+        <div class="fld"><span>Фото (полароид)</span><div class="up" data-up="transport"></div></div>
+      </div>
+
+      <div class="grp" data-block="contacts">
+        <h3 class="grp__title">📇 Контакты</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="contactsText" rows="3"></textarea></label>
+        <div class="fld"><span>Фото (полароид)</span><div class="up" data-up="contacts"></div></div>
+      </div>
+
+      <!-- ВСЕГДА -->
+      <div class="grp">
+        <h3 class="grp__title">Финальная фраза</h3>
+        <label class="fld"><span>Текст</span><textarea data-field="closing" rows="2"></textarea></label>
+        <div class="size-row">
+          <label class="size-fld"><span>Размер текста</span><input type="range" min="2" max="4.5" step="0.1" data-size="closingSize" data-default="3.1" /></label>
+        </div>
+      </div>
+
+      <div class="grp">
+        <h3 class="grp__title">🎵 Фоновая музыка</h3>
+        <div class="music-up" id="musicUp">
+          <span id="musicLabel">Загрузить аудио (mp3)</span>
+          <button class="music-clear" id="musicClear" type="button" hidden>Убрать</button>
+        </div>
+        <p class="fld__hint">Гости услышат музыку при открытии приглашения.</p>
+      </div>
+    </section>
+
+    <section class="cstr-preview">
+      <div class="cstr-phone">
+        <div class="cstr-notch"></div>
+        <div class="cstr-screen" id="preview"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ВЫБОР БЛОКОВ -->
+  <div class="bsel" id="bsel">
+    <div class="bsel__box">
+      <h2 class="bsel__title">Соберите своё приглашение</h2>
+      <p class="bsel__sub">Обложка, приглашение и финал есть всегда. Выберите дополнительные блоки — их можно поменять в любой момент.</p>
+      <button class="bsel__later" id="bselLater" type="button">
+        <span class="bsel__later-t">Не уверены? Настроим позже</span>
+        <span class="bsel__later-s">Оставим стандартный набор — изменить можно когда угодно</span>
+      </button>
+      <div class="bsel__grid" id="bselGrid"></div>
+      <div class="bsel__bar">
+        <span class="bsel__count" id="bselCount"></span>
+        <button class="bsel__done" id="bselDone">Перейти к оформлению →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- модалка ссылки -->
+  <div class="share-modal" id="shareModal" hidden>
+    <div class="share-modal__box">
+      <button class="share-modal__close" id="shareClose">×</button>
+      <h3>Ссылка для гостей готова 🎉</h3>
+      <p>Отправьте её гостям любым удобным способом.</p>
+      <div class="share-modal__link"><input id="shareLink" readonly /><button id="shareCopy">Копировать</button></div>
+      <a id="shareOpen" class="share-modal__open" target="_blank">Открыть приглашение →</a>
+    </div>
+  </div>
+
+  <script src="themes.js"></script>
+  <script src="animations.js"></script>
+  <script src="tpl-v2.js"></script>
+  <script src="scratch.js"></script>
+  <script src="music.js"></script>
+  <script src="colorpicker.js"></script>
+  <script src="constructor.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приглашение</title>
+  <!-- предзагрузка шрифтов и задника шаблона: без мигания шрифтов и быстрее первый рендер -->
+  <link rel="preload" href="assets/fonts/Jun_Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/fonts/PassionsConflictRUS-Regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/fonts/helvetica_regular.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="assets/themes/olive/open-intro.jpg" as="image" />
+  <link rel="preload" href="assets/themes/olive/site.jpg" as="image" />
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="stylesheet" href="tpl-v2.css" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    /* приглашение на весь экран: без зазоров по бокам и без горизонтального сдвига */
+    html,body{overflow-x:hidden;background:#1d2412;}
+    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;}
+    .stage-wrap{width:100%;max-width:520px;margin:0 auto;background:#1d2412;overflow-x:hidden;}
+  </style>
+</head>
+<body>
+  <div class="stage-wrap">
+    <div id="invite"></div>
+  </div>
+
+  <script src="themes.js"></script>
+  <script src="animations.js"></script>
+  <script src="tpl-v2.js"></script>
+  <script src="scratch.js"></script>
+  <script src="music.js"></script>
+  <script src="invite.js"></script>
+</body>
+</html>
