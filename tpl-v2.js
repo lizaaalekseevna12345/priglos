@@ -272,14 +272,15 @@
 
   function render(state, root, opts){
     opts = opts || {};
-    const s = Object.assign({}, defaultState, state||{});
-    s.photos = Object.assign({}, defaultState.photos, (state&&state.photos)||{});
     const container = root.querySelector('[data-v2root]') || root;
 
-    // тема: подписи + CSS-переменные
-    const themeId = opts.themeId || s.theme || 'emerald';
+    // тема резолвится раньше состояния — её stateDefaults задают палитру/дефолты под шаблон
+    const themeId = opts.themeId || (state && state.theme) || defaultState.theme;
     let theme = null;
     if (global.ThemeKit) theme = global.ThemeKit.apply(root, themeId);
+    const sd = (theme && theme.stateDefaults) || {};
+    const s = Object.assign({}, defaultState, sd, state||{});
+    s.photos = Object.assign({}, defaultState.photos, sd.photos||{}, (state&&state.photos)||{});
     const L = Object.assign({}, DEFAULT_LABELS, (theme && theme.labels) || {});
 
     const fixed = !!(theme && theme.fixedLayout);

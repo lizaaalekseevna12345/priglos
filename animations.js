@@ -138,6 +138,8 @@
   function envelopeIntro(opts) {
     opts = opts || {};
     const done = () => { try { opts.onDone && opts.onDone(); } catch (e) {} };
+    // тема без обложки/видео/конверта — интро не показываем (открывается сразу, напр. бордовая со скретчем)
+    if (!opts.videoSrc && !opts.coverSrc && !opts.imageSrc) { done(); return; }
     if (sessionStorage.getItem('env_seen') === '1') { done(); return; } // один раз за сессию
     sessionStorage.setItem('env_seen', '1');
     if (reduced()) { done(); return; }

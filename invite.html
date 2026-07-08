@@ -8,8 +8,17 @@
   <link rel="preload" href="assets/fonts/Jun_Regular.otf" as="font" type="font/otf" crossorigin />
   <link rel="preload" href="assets/fonts/PassionsConflictRUS-Regular.otf" as="font" type="font/otf" crossorigin />
   <link rel="preload" href="assets/fonts/helvetica_regular.otf" as="font" type="font/otf" crossorigin />
-  <link rel="preload" href="assets/themes/olive/open-intro.jpg" as="image" />
-  <link rel="preload" href="assets/themes/olive/site.jpg" as="image" />
+  <!-- предзагрузка задника нужной темы (по theme из ссылки) — быстрый первый рендер, без лишних байт -->
+  <script>
+    (function(){try{
+      var m=/data=([^&]+)/.exec(location.hash); if(!m) return;
+      var s=JSON.parse(decodeURIComponent(escape(atob(m[1])))); var t=s.theme||'';
+      if(t!=='olive'&&t!=='burgundy') return;
+      var l=document.createElement('link'); l.rel='preload'; l.as='image';
+      l.href='assets/themes/'+t+'/site.jpg'; document.head.appendChild(l);
+      if(t==='olive'){var o=document.createElement('link');o.rel='preload';o.as='image';o.href='assets/themes/olive/open-intro.jpg';document.head.appendChild(o);}
+    }catch(e){}})();
+  </script>
   <link rel="stylesheet" href="fonts.css" />
   <link rel="stylesheet" href="animations.css" />
   <link rel="stylesheet" href="tpl-v2.css" />

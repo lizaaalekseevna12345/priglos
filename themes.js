@@ -127,6 +127,49 @@
       fixedLayout: true,
       siteW: 512, siteH: 3915,
     },
+
+    // ░░ Бордовая симфония — анимированная (цельная подложка + оверлеи) ░░
+    burgundy: {
+      id: 'burgundy',
+      name: 'Бордовая симфония',
+      vars: {
+        '--green': '#5c1620',
+        '--green-d': '#3e0e16',
+        '--cream': '#f2ead9',
+        '--ink': '#5c1620',
+        '--muted': '#8a5560',
+        '--light': '#f2ead9',
+        '--gold': '#b6a06a',
+        '--line': '#d8d2bb',
+        '--font-heading': "'Jun', Georgia, serif",
+        '--font-names': "'Passions', 'Jun', cursive",
+        '--font-body': "Georgia, 'Times New Roman', serif",
+        '--font-accent': "'Passions', cursive",
+        '--site': "url('assets/themes/burgundy/site.jpg')",
+        '--title-img': "url('assets/themes/burgundy/title.png')",
+        '--wreath': "url('assets/themes/burgundy/wreath.png')",
+        '--cartouche': "url('assets/themes/burgundy/cartouche.png')",
+        '--ph-img': "url('assets/themes/olive/ph.png')",
+      },
+      labels: {
+        the: '', wed: 'THE WEDDING DAY',
+        countdownLabel: 'До нашей свадьбы осталось:',
+        venueTitle: 'МЕСТО ВСТРЕЧИ', mapBtn: 'Посмотреть на карте',
+        timelineTitle: 'ПРОГРАММА ДНЯ', dresscodeTitle: 'ДРЕСС-КОД', detailsTitle: 'ДЕТАЛИ',
+        giftsTitle: 'ПОЖЕЛАНИЯ', photosTitle: 'ФОТОГРАФИИ', storyTitle: 'НАША ИСТОРИЯ',
+        transportTitle: 'ТРАНСФЕР', contactsTitle: 'КОНТАКТЫ', faqTitle: 'ВОПРОСЫ И ОТВЕТЫ',
+      },
+      decor: {
+        glitter: 'assets/themes/burgundy/scratch.png', // овал-блёстки для скретча
+        wreath: 'assets/themes/burgundy/wreath.png',
+      },
+      anims: ['scratch', 'stars', 'glitter'],
+      envelope: '', // без видео-конверта и без интро — открывается сразу на скретч-герое
+      fixedLayout: true,
+      siteW: 512, siteH: 3915,
+      // дефолты состояния под тему: бордовая палитра дресс-кода вместо оливковой
+      stateDefaults: { dressColors: ['#5c1620', '#8a1c2a', '#b8434f', '#d98f97', '#f2ead9'] },
+    },
   };
 
   // применяет тему к корню: ставит data-theme и инжектит CSS-переменные один раз
