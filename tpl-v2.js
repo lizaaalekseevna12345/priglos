@@ -318,8 +318,8 @@
     // программа (каждый пункт проявляется при прокрутке — стаггер через transition-delay)
     const tl = container.querySelector('[data-timeline]');
     if (tl) tl.innerHTML = (s.program||[]).slice(0,10).map((it,i)=> fixed
-      ? `<div class="olv-prow" data-reveal style="transition-delay:${(i*0.09).toFixed(2)}s"><span class="olv-ptime">${esc(it.time)}</span><span class="olv-pdot"></span><span class="olv-plabel">${esc(it.label)}</span></div>`
-      : `<div class="v2-tl__item" data-reveal style="transition-delay:${(i*0.09).toFixed(2)}s"><span class="v2-tl__time">${esc(it.time)}</span><span class="v2-tl__dot"></span><span class="v2-tl__label">${esc(it.label)}</span></div>`).join('');
+      ? `<div class="olv-prow" data-reveal style="transition-delay:${(i*0.16).toFixed(2)}s"><span class="olv-ptime">${esc(it.time)}</span><span class="olv-pdot"></span><span class="olv-plabel">${esc(it.label)}</span></div>`
+      : `<div class="v2-tl__item" data-reveal style="transition-delay:${(i*0.16).toFixed(2)}s"><span class="v2-tl__time">${esc(it.time)}</span><span class="v2-tl__dot"></span><span class="v2-tl__label">${esc(it.label)}</span></div>`).join('');
 
     // дресс-код — образцы (в венках для модульной темы, простыми кружками для подложки)
     const dr = container.querySelector('[data-dress]');
