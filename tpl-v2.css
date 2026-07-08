@@ -277,7 +277,7 @@
 .v2-root[data-theme="burgundy"] .olv-cd{left:6%;top:39%;width:88%;}
 .v2-root[data-theme="burgundy"] .olv-cd .v2-cd__cell b{color:#5c1620;}
 .v2-root[data-theme="burgundy"] .olv-cd .v2-cd__cell::after{color:#5c1620;}
-.v2-root[data-theme="burgundy"] .olv-cd .v2-cd__cell span{display:none;}
+.v2-root[data-theme="burgundy"] .olv-cd .v2-cd__cell span{display:block;color:#8a5560;font-size:1.7cqw;margin-top:.7cqw;}
 
 /* ── VENUE (кружевная рамка на красном занавесе) ── */
 .v2-root[data-theme="burgundy"] .olv-ph-venue{left:34%;top:46.1%;width:32%;height:4.9%;}
