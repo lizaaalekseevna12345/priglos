@@ -266,7 +266,7 @@
 .v2-root[data-theme="burgundy"] .olv-names{display:flex;flex-direction:column;align-items:center;
   font-size:11cqw;line-height:.88;color:#f2ead9;margin-top:11cqw;}
 .v2-root[data-theme="burgundy"] .olv-names span{font-size:.42em;opacity:.85;line-height:1;margin:.4cqw 0;}
-.v2-root[data-theme="burgundy"] .olv-date{font-family:'Jun',Georgia,serif;font-size:2.9cqw;letter-spacing:.2em;color:#eaddc7;margin-top:auto;}
+.v2-root[data-theme="burgundy"] .olv-date{font-family:'Jun',Georgia,serif;font-size:4cqw;letter-spacing:.18em;color:#eaddc7;margin-top:3cqw;}
 .v2-root[data-theme="burgundy"] .olv-scratch{left:25.5%;top:4.6%;width:48.5%;height:11.4%;}
 
 /* ── INVITATION (конверт с каллами) ── */
