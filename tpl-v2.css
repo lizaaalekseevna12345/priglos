@@ -317,7 +317,7 @@
 /* обрезаем сразу под «Деталями» — без красной полосы сверху доп. блоков */
 .v2-root[data-theme="burgundy"] .olv-wrap{aspect-ratio:512/3524;background:#3e0e16;}
 /* полароид «Деталей» отдельным слоем поверх стыка (как в оригинале, слева) */
-.v2-root[data-theme="burgundy"] .olv-bridge{left:4%;top:632cqw;width:33cqw;transform:rotate(-12deg);animation-name:brgSway3;}
+.v2-root[data-theme="burgundy"] .olv-bridge{left:4%;top:638cqw;width:33cqw;transform:rotate(-12deg);animation-name:brgSway3;}
 .v2-root[data-theme="burgundy"] .olv-bridge .olv-pimg{aspect-ratio:4/5;}
 
 /* экран доп. блока: заголовок сверху + полароид по центру + текст снизу, фон бордовый флораль */
