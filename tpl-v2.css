@@ -314,27 +314,32 @@
 /* ════════ ДОП. БЛОКИ «БОРДОВОЙ СИМФОНИИ» (Пожелания/История/Трансфер/Контакты) ════════ */
 /* при выборе доп. блока подложка обрезается ниже «Деталей» (пустой красный низ уходит),
    закрытие-плашка рендерится отдельным блоком снизу */
-.v2-root[data-theme="burgundy"] .olv-wrap{aspect-ratio:512/3690;background:#3e0e16;}
+/* обрезаем сразу под «Деталями» — без красной полосы сверху доп. блоков */
+.v2-root[data-theme="burgundy"] .olv-wrap{aspect-ratio:512/3524;background:#3e0e16;}
 /* полароид «Деталей» отдельным слоем поверх стыка (как в оригинале, слева) */
 .v2-root[data-theme="burgundy"] .olv-bridge{left:4%;top:632cqw;width:33cqw;transform:rotate(-12deg);animation-name:brgSway3;}
 .v2-root[data-theme="burgundy"] .olv-bridge .olv-pimg{aspect-ratio:4/5;}
 
-/* экран доп. блока: заголовок сверху + текст снизу на бордовом флорале, без фото */
+/* экран доп. блока: заголовок сверху + полароид по центру + текст снизу, фон бордовый флораль */
 .v2-root[data-theme="burgundy"] .olg{position:relative;width:100%;aspect-ratio:706/1039;container-type:inline-size;overflow:hidden;
   background:var(--fon) center/cover no-repeat;color:#f4ecdb;
   display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  padding:11% 0 7.5%;text-align:center;}
+  padding:11% 0 8%;text-align:center;}
 .v2-root[data-theme="burgundy"] .olg-title{font-family:'Jun',Georgia,serif;text-transform:uppercase;font-weight:400;
   font-size:8.5cqw;letter-spacing:.04em;line-height:1.1;color:#f4ecdb;max-width:90%;}
-.v2-root[data-theme="burgundy"] .olg-pola{display:none;} /* в бордовых доп.блоках фото нет */
+/* белый полароид по центру (фото загружает клиент) */
+.v2-root[data-theme="burgundy"] .olg-pola{display:block;width:41cqw;transform:rotate(-4deg);}
 .v2-root[data-theme="burgundy"] .olg-text{font-family:'HelveticaR',Arial,sans-serif;font-size:4cqw;line-height:1.42;
   color:#efe4d2;white-space:pre-line;max-width:80%;}
 
-/* закрытие после доп. блоков: плашка-открыточка на бордовом фоне */
-.v2-root[data-theme="burgundy"] .olg-bottom{position:relative;width:100%;aspect-ratio:706/560;container-type:inline-size;overflow:hidden;
-  background:var(--fon) center/cover no-repeat;}
-.v2-root[data-theme="burgundy"] .olg-birka{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:74cqw;aspect-ratio:1253/834;background:var(--cartouche) center/contain no-repeat;
+/* закрытие: сверху фон «трансфера» (флораль), снизу красный картон «love», бирка по стыку 50/50 */
+.v2-root[data-theme="burgundy"] .olg-bottom{position:relative;width:100%;aspect-ratio:706/720;container-type:inline-size;overflow:hidden;
+  background:
+    var(--fon-niz) bottom center/100% auto no-repeat,
+    var(--fon) top center/100% auto no-repeat,
+    #5a0e12;}
+.v2-root[data-theme="burgundy"] .olg-birka{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);
+  width:76cqw;aspect-ratio:1253/834;background:var(--cartouche) center/contain no-repeat;
   display:flex;align-items:center;justify-content:center;z-index:10;}
 .v2-root[data-theme="burgundy"] .olg-sign{font-family:'Jun',Georgia,serif;text-transform:uppercase;font-size:3cqw;line-height:1.4;
   letter-spacing:.02em;color:#5c1620;text-align:center;white-space:pre-line;max-width:60%;}
