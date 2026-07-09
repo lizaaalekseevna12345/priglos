@@ -326,11 +326,11 @@
   display:flex;flex-direction:column;align-items:center;justify-content:space-between;
   padding:11% 0 8%;text-align:center;}
 .v2-root[data-theme="burgundy"] .olg-title{font-family:'Jun',Georgia,serif;text-transform:uppercase;font-weight:400;
-  font-size:8.5cqw;letter-spacing:.04em;line-height:1.1;color:#f4ecdb;max-width:90%;}
+  font-size:8.5cqw;letter-spacing:.04em;line-height:1.1;color:#f4ecdb;max-width:90%;text-shadow:0 1px 8px rgba(0,0,0,.55);}
 /* белый полароид по центру (фото загружает клиент) */
 .v2-root[data-theme="burgundy"] .olg-pola{display:block;width:41cqw;transform:rotate(-4deg);}
 .v2-root[data-theme="burgundy"] .olg-text{font-family:'HelveticaR',Arial,sans-serif;font-size:4cqw;line-height:1.42;
-  color:#efe4d2;white-space:pre-line;max-width:80%;}
+  color:#efe4d2;white-space:pre-line;max-width:80%;text-shadow:0 1px 7px rgba(0,0,0,.6);}
 
 /* закрытие: сверху фон «трансфера» (флораль), снизу красный картон «love», бирка по стыку 50/50 */
 .v2-root[data-theme="burgundy"] .olg-bottom{position:relative;width:100%;aspect-ratio:706/720;container-type:inline-size;overflow:hidden;
