@@ -301,9 +301,9 @@
 .v2-root[data-theme="burgundy"] .olv-wreath{width:12.5cqw;}
 
 /* ── DETAILS (тёмные розы) ── */
-/* мягкое качание, всегда наклонён влево — не наезжает на текст справа */
-.v2-root[data-theme="burgundy"] .olv-ph-details{left:7%;top:83.5%;width:34%;transform:rotate(-12deg);animation-name:brgSway3;}
-@keyframes brgSway3{0%,100%{transform:rotate(-13deg);}50%{transform:rotate(-11deg);}}
+/* мягкое качание + сдвиг левее — полароид (с тенью) не наезжает на текст справа */
+.v2-root[data-theme="burgundy"] .olv-ph-details{left:4%;top:83.5%;width:33%;transform:rotate(-12deg);animation-name:brgSway3;}
+@keyframes brgSway3{0%,100%{transform:rotate(-12.5deg);}50%{transform:rotate(-11.5deg);}}
 .v2-root[data-theme="burgundy"] .olv-details{left:50%;top:86.3%;width:46%;font-size:2.9cqw;color:#f2ead9;}
 
 /* ── CLOSING (фигурная плашка «открыточка» на розах) ── */
