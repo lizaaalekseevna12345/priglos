@@ -336,7 +336,7 @@
 .v2-root[data-theme="burgundy"] .olg-bottom{position:relative;width:100%;aspect-ratio:706/720;container-type:inline-size;overflow:hidden;
   background:
     var(--fon-niz) bottom center/100% auto no-repeat,
-    var(--fon) top center/100% auto no-repeat,
+    var(--fon) center/cover no-repeat,
     #5a0e12;}
 .v2-root[data-theme="burgundy"] .olg-birka{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);
   width:76cqw;aspect-ratio:1253/834;background:var(--cartouche) center/contain no-repeat;
