@@ -149,7 +149,8 @@
         '--title-img': "url('assets/themes/burgundy/title.png')",
         '--wreath': "url('assets/themes/burgundy/wreath.png')",
         '--cartouche': "url('assets/themes/burgundy/cartouche.png')",
-        '--fon': "url('assets/themes/burgundy/fon.jpg')", // фон доп. блоков
+        '--fon': "url('assets/themes/burgundy/fon.jpg')", // фон доп. блоков (лилии)
+        '--fon-det': "url('assets/themes/burgundy/fon-det.jpg')", // маки — верх плашки закрытия
         '--fon-niz': "url('assets/themes/burgundy/fon-niz.jpg')", // красный картон «love» под биркой
         '--ph-img': "url('assets/themes/olive/ph.png')",
       },
