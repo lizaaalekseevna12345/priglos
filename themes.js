@@ -149,6 +149,7 @@
         '--title-img': "url('assets/themes/burgundy/title.png')",
         '--wreath': "url('assets/themes/burgundy/wreath.png')",
         '--cartouche': "url('assets/themes/burgundy/cartouche.png')",
+        '--fon': "url('assets/themes/burgundy/fon.jpg')", // фон доп. блоков
         '--ph-img': "url('assets/themes/olive/ph.png')",
       },
       labels: {
