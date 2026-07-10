@@ -156,7 +156,7 @@
 .olv-names{font-family:var(--font-names);font-size:10.2cqw;line-height:.92;color:#3c402f;}
 .olv-names span{font-size:.55em;opacity:.8;padding:0 .4cqw;}
 /* оливковая: имена жениха и невесты в столбик (Диана / & / Игорь), крупнее и плотнее */
-.v2-root[data-theme="olive"] .olv-names{display:flex;flex-direction:column;align-items:center;font-size:12.5cqw;line-height:.78;}
+.v2-root[data-theme="olive"] .olv-names{display:flex;flex-direction:column;align-items:center;font-size:15cqw;line-height:.76;}
 .olv-date{font-family:'Passions','Jun',cursive;font-size:13cqw;letter-spacing:.02em;color:#5a5e49;margin-top:0;}
 .olv-scratch{position:absolute;left:18.5%;top:3.9%;width:63%;height:12.2%;z-index:5;display:block;cursor:grab;touch-action:none;}
 
