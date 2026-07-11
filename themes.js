@@ -174,6 +174,7 @@
       // (глубокое вино → бордо → насыщенный красный (каллы) → пыльная роза → крем)
       // + цвета/размеры шапки, чтобы конструктор (пипетки/ползунки) совпадал с рендером
       stateDefaults: {
+        name1: 'Мария', name2: 'Кирилл',
         dressColors: ['#3e0e16', '#6b1622', '#a3181f', '#d0959c', '#f2ead9'],
         titleColor: '#ECECEC', nameColor: '#ECECEC', dateColor: '#ECECEC',
         nameSize: 11, dateSize: 4,
