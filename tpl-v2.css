@@ -162,8 +162,8 @@
 /* подсказка «СОТРИ МЕНЯ» на самой салфетке — видна ~2с и растворяется (оливковый — тёмным) */
 .olv-hint{position:absolute;left:0;right:0;top:9.2%;z-index:6;text-align:center;pointer-events:none;
   font-family:'Jun',Georgia,serif;text-transform:uppercase;letter-spacing:.24em;font-size:3cqw;font-weight:700;
-  color:#3c402f;opacity:0;animation:olvHintShow 2.6s ease forwards;}
-@keyframes olvHintShow{0%{opacity:0}8%{opacity:.92}72%{opacity:.92}100%{opacity:0}}
+  color:#3c402f;opacity:0;animation:olvHintShow 1.5s ease forwards;}
+@keyframes olvHintShow{0%{opacity:0}12%{opacity:.6}70%{opacity:.6}100%{opacity:0}}
 
 /* ── INVITATION ── */
 .olv-invtitle{position:absolute;left:8%;top:21.6%;width:84%;text-align:center;font-family:var(--font-heading);font-weight:400;font-size:5.2cqw;letter-spacing:.04em;line-height:1.15;color:#3c402f;white-space:pre-line;}
