@@ -356,13 +356,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: flex-end;
   color: #fff;
 }
-.review--g1 { background: linear-gradient(160deg,#7c8a72,#3c4536); }
-.review--g2 { background: linear-gradient(160deg,#6e5742,#332620); }
-.review--g3 { background: linear-gradient(160deg,#8a2f55,#2c1020); }
-.review--g4 { background: linear-gradient(160deg,#c66a4a,#4a1f18); }
-.review--g5 { background: linear-gradient(160deg,#5a4a6b,#241b30); }
-.review--g6 { background: linear-gradient(160deg,#9a3b3b,#2c1414); }
-.review--g7 { background: linear-gradient(160deg,#4d6b78,#1d2a30); }
+.review--g1 { background: #3c4536 url('assets/reviews/1.jpg') center/cover no-repeat; }
+.review--g2 { background: #332620 url('assets/reviews/2.jpg') center/cover no-repeat; }
+.review--g3 { background: #2c1020 url('assets/reviews/3.jpg') center/cover no-repeat; }
+.review--g4 { background: #4a1f18 url('assets/reviews/4.jpg') center/cover no-repeat; }
+.review--g5 { background: #241b30 url('assets/reviews/5.jpg') center/cover no-repeat; }
+.review--g6 { background: #2c1414 url('assets/reviews/6.jpg') center/cover no-repeat; }
+.review--g7 { background: #1d2a30 url('assets/reviews/7.jpg') center/cover no-repeat; }
 .review__shade {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.72) 100%);
