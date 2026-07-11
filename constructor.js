@@ -131,8 +131,23 @@
   });
 
   // ── размер шрифта имён и даты (cqw) ──
+  // базовый (красивый по умолчанию) размер для каждой темы. Ползунок настраиваем так,
+  // чтобы этот размер стоял на ~30% дорожки: 30% запаса вниз, 70% вверх на увеличение.
+  // Формула для позиции 30%: min = base·0.571, max = base·2.
+  const SIZEBASE = {
+    olive:    { nameSize: 15, dateSize: 13 },
+    burgundy: { nameSize: 11, dateSize: 4 },
+    emerald:  { nameSize: 10.2, dateSize: 13 },
+  };
   document.querySelectorAll('[data-size]').forEach((inp) => {
     const key = inp.dataset.size;
+    const base = (SIZEBASE[state.theme] || {})[key];
+    if (base != null) {
+      inp.min = (base * 0.571).toFixed(1);
+      inp.max = (base * 2).toFixed(1);
+      inp.step = '0.1';
+      inp.dataset.default = String(base); // дефолт-позиция = базовый размер (≈30% дорожки)
+    }
     inp.value = parseFloat(state[key]) || parseFloat(inp.dataset.default || '2');
     inp.addEventListener('input', () => { state[key] = inp.value; render(); });
   });
