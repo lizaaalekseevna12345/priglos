@@ -26,6 +26,7 @@
     if (sc && window.ScratchEffect) {
       if (scratchDone) {
         sc.style.display = 'none'; // уже открыто — не перекрываем заново при редактировании
+        const h = preview.querySelector('.olv-hint'); if (h) h.style.display = 'none';
       } else {
         const theme = (window.ThemeKit && ThemeKit.get(state.theme)) || {};
         ScratchEffect.init(sc, (theme.decor && theme.decor.glitter) || 'frost', {

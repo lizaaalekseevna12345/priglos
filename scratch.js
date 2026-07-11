@@ -122,6 +122,9 @@
       if (revealed) return; revealed = true;
       canvas.style.transition = 'opacity .6s ease'; canvas.style.opacity = '0';
       setTimeout(() => { canvas.style.display = 'none'; }, 600);
+      // подсказка «сотри меня плиз» — гаснет вместе с блёстками
+      const hint = canvas.parentNode && canvas.parentNode.querySelector('.olv-hint');
+      if (hint) { hint.style.transition = 'opacity .5s ease'; hint.style.opacity = '0'; setTimeout(() => { hint.style.display = 'none'; }, 500); }
       if (opts.onReveal) try { opts.onReveal(); } catch (e) {}
     }
 

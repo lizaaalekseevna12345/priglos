@@ -208,7 +208,7 @@
         <div class="olv-names" data-bind="names" data-reveal style="${st(s.nameColor,s.nameSize)}">${esc(s.name1)} <span>&amp;</span> ${esc(s.name2)}</div>
         <div class="olv-date" data-bind="heroDate" data-reveal style="${st(s.dateColor,s.dateSize)}">${heroDate(s.date)}</div>
       </div>
-      ${opts && opts.scratch ? '<canvas class="olv-scratch" data-scratch></canvas>' : ''}
+      ${opts && opts.scratch ? '<canvas class="olv-scratch" data-scratch></canvas><div class="olv-hint">сотри меня плиз</div>' : ''}
       <h2 class="olv-invtitle" data-bind="inviteTitle" data-reveal style="${st(null,s.inviteTitleSize)}">${esc(s.inviteTitle)}</h2>
       <p class="olv-invite" data-bind="inviteText" style="${st(null,s.inviteTextSize)}">${esc(s.inviteText)}</p>
       <div class="olv-pola olv-ph-1"><div class="olv-pimg" data-photo="invite1" ${bg(s.photos.invite1)}></div></div>
