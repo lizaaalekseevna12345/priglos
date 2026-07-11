@@ -101,10 +101,14 @@
   });
 
   // ── текстовые поля ──
+  // перерисовка превью тяжёлая (пересборка разметки + скретч/таймер), поэтому при вводе
+  // текста рендерим не на каждую букву, а с дебаунсом — иначе клавиатура «виснет»
+  let renderT = 0;
+  function renderDebounced() { clearTimeout(renderT); renderT = setTimeout(render, 160); }
   document.querySelectorAll('[data-field]').forEach((input) => {
     const key = input.dataset.field;
     if (state[key] != null) input.value = state[key];
-    input.addEventListener('input', () => { state[key] = input.value; render(); });
+    input.addEventListener('input', () => { state[key] = input.value; renderDebounced(); });
   });
 
   // ── фото ──
