@@ -159,11 +159,11 @@
 .v2-root[data-theme="olive"] .olv-names{display:flex;flex-direction:column;align-items:center;font-size:15cqw;line-height:.76;}
 .olv-date{font-family:'Passions','Jun',cursive;font-size:13cqw;letter-spacing:.02em;color:#5a5e49;margin-top:0;}
 .olv-scratch{position:absolute;left:18.5%;top:3.9%;width:63%;height:12.2%;z-index:5;display:block;cursor:grab;touch-action:none;}
-/* маленькая подсказка «сотри меня плиз» под салфеткой (гаснет при стирании) */
-.olv-hint{position:absolute;left:0;right:0;top:19.3%;z-index:6;text-align:center;pointer-events:none;
-  font-family:'Jun',Georgia,serif;text-transform:lowercase;letter-spacing:.18em;font-size:2.5cqw;
-  color:#f3efe0;animation:olvHintPulse 1.9s ease-in-out infinite;}
-@keyframes olvHintPulse{0%,100%{opacity:.4}50%{opacity:.9}}
+/* подсказка «СОТРИ МЕНЯ» на самой салфетке — видна ~2с и растворяется (оливковый — тёмным) */
+.olv-hint{position:absolute;left:0;right:0;top:9.2%;z-index:6;text-align:center;pointer-events:none;
+  font-family:'Jun',Georgia,serif;text-transform:uppercase;letter-spacing:.24em;font-size:3cqw;font-weight:700;
+  color:#3c402f;opacity:0;animation:olvHintShow 2.6s ease forwards;}
+@keyframes olvHintShow{0%{opacity:0}8%{opacity:.92}72%{opacity:.92}100%{opacity:0}}
 
 /* ── INVITATION ── */
 .olv-invtitle{position:absolute;left:8%;top:21.6%;width:84%;text-align:center;font-family:var(--font-heading);font-weight:400;font-size:5.2cqw;letter-spacing:.04em;line-height:1.15;color:#3c402f;white-space:pre-line;}
@@ -275,7 +275,7 @@
 .v2-root[data-theme="burgundy"] .olv-names span{font-size:.42em;opacity:.85;line-height:1;margin:.4cqw 0 -1.2cqw;}
 .v2-root[data-theme="burgundy"] .olv-date{font-family:'Jun',Georgia,serif;font-size:4cqw;letter-spacing:.18em;color:#eaddc7;margin-top:9cqw;}
 .v2-root[data-theme="burgundy"] .olv-scratch{left:25.5%;top:4.6%;width:48.5%;height:11.4%;}
-.v2-root[data-theme="burgundy"] .olv-hint{top:19.2%;color:#7a1f2a;}
+.v2-root[data-theme="burgundy"] .olv-hint{top:9.4%;color:#f4ecdb;}
 
 /* ── INVITATION (конверт с каллами) ── */
 /* заголовок закреплён по нижнему краю — при переносе на 2-ю строку растёт вверх, не наезжает на конверт */
