@@ -179,7 +179,7 @@
       stateDefaults: {
         name1: 'Мария', name2: 'Кирилл',
         contactsText: 'Если у вас появятся вопросы — будем рады помочь!\nМария: +7 900 000-00-00\nКирилл: +7 900 000-00-01',
-        closing: 'МЫ ОЧЕНЬ ЖДЁМ КАЖДОГО ИЗ ВАС!\nС ЛЮБОВЬЮ, ВАШИ МАРИЯ И КИРИЛЛ',
+        closing: 'МЫ ОЧЕНЬ ЖДЁМ\nКАЖДОГО ИЗ ВАС!\nС ЛЮБОВЬЮ,\nВАШИ МАРИЯ И КИРИЛЛ',
         dressColors: ['#3e0e16', '#6b1622', '#a3181f', '#d0959c', '#f2ead9'],
         titleColor: '#ECECEC', nameColor: '#ECECEC', dateColor: '#ECECEC',
         nameSize: 11, dateSize: 4,
