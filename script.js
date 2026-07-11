@@ -96,8 +96,29 @@ function cardStep() {
   const gap = parseInt(getComputedStyle(track).columnGap || '22', 10);
   return card.offsetWidth + gap;
 }
-next.addEventListener('click', () => track.scrollBy({ left: cardStep(), behavior: 'smooth' }));
-prev.addEventListener('click', () => track.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+
+// ── бесконечная лента: 3 копии набора, держим скролл в средней ──
+// при выходе за границу мгновенно сдвигаем на ширину набора (контент идентичен → незаметно)
+const reviewSet = Array.from(track.children);
+const setLen = reviewSet.length;
+reviewSet.forEach((c) => track.appendChild(c.cloneNode(true))); // копия 2
+reviewSet.forEach((c) => track.appendChild(c.cloneNode(true))); // копия 3
+function setWidth() { return cardStep() * setLen; }
+function wrapLoop() {
+  const w = setWidth();
+  if (!w) return;
+  const prevB = track.style.scrollBehavior;
+  track.style.scrollBehavior = 'auto';
+  if (track.scrollLeft < w * 0.5) track.scrollLeft += w;
+  else if (track.scrollLeft > w * 1.5) track.scrollLeft -= w;
+  track.style.scrollBehavior = prevB;
+}
+// старт — в начале среднего (второго) набора, чтобы был запас в обе стороны
+requestAnimationFrame(() => { track.scrollLeft = setWidth(); });
+track.addEventListener('scroll', wrapLoop, { passive: true });
+
+next.addEventListener('click', () => { wrapLoop(); track.scrollBy({ left: cardStep(), behavior: 'smooth' }); });
+prev.addEventListener('click', () => { wrapLoop(); track.scrollBy({ left: -cardStep(), behavior: 'smooth' }); });
 
 // перетаскивание мышью
 let isDown = false, startX = 0, startScroll = 0;
