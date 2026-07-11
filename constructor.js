@@ -200,10 +200,29 @@
   musicClear.addEventListener('click',()=>{ state.music=''; musicFile.value=''; musicSync(); });
 
   // ── ссылка ──
+  // приглашение сохраняется в облако (Supabase), гостю уходит короткая ссылка ?id=…
+  // (раньше все данные + фото зашивались в URL — ссылки распухали и ломались)
   const modal=document.getElementById('shareModal');
-  document.getElementById('shareBtn').addEventListener('click',()=>{
-    const url=new URL('invite.html',location.href).href+'#data='+encodeState(state);
-    document.getElementById('shareLink').value=url; document.getElementById('shareOpen').href=url; modal.hidden=false;
+  const shareBtn=document.getElementById('shareBtn');
+  const shareLink=document.getElementById('shareLink');
+  const shareOpen=document.getElementById('shareOpen');
+  const shareCopy=document.getElementById('shareCopy');
+  shareBtn.addEventListener('click', async ()=>{
+    modal.hidden=false;
+    shareLink.value='Создаём ссылку…'; shareOpen.removeAttribute('href');
+    if(shareCopy) shareCopy.disabled=true;
+    shareBtn.disabled=true;
+    try {
+      const id = await InviteStore.save(state);
+      const url = new URL('invite.html', location.href).href + '?id=' + id;
+      shareLink.value=url; shareOpen.href=url;
+      if(shareCopy) shareCopy.disabled=false;
+    } catch(e) {
+      shareLink.value='';
+      alert('Не удалось создать ссылку: ' + (e && e.message ? e.message : 'ошибка сети') + '. Попробуйте ещё раз.');
+    } finally {
+      shareBtn.disabled=false;
+    }
   });
   document.getElementById('shareClose').addEventListener('click',()=>(modal.hidden=true));
   modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.hidden=true; });
