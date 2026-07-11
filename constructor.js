@@ -101,14 +101,33 @@
   });
 
   // ── текстовые поля ──
-  // перерисовка превью тяжёлая (пересборка разметки + скретч/таймер), поэтому при вводе
-  // текста рендерим не на каждую букву, а с дебаунсом — иначе клавиатура «виснет»
+  // Полный render() пересобирает всю разметку + переинициализирует скретч/звёзды/таймер —
+  // на телефоне это заметно тормозит ввод. Поэтому при печати обновляем ТОЛЬКО нужный
+  // элемент превью напрямую (мгновенно), а тяжёлый render зовём лишь когда без него нельзя.
+  function escHtml(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function liveText(key) {
+    if (key === 'date') return false; // влияет на счётчик и формат даты — нужен полный рендер
+    if (key === 'name1' || key === 'name2') {
+      const el = preview.querySelector('[data-bind="names"]');
+      if (!el) return false;
+      el.innerHTML = escHtml(state.name1) + ' <span>&amp;</span> ' + escHtml(state.name2);
+      return true;
+    }
+    const els = preview.querySelectorAll('[data-bind="' + key + '"]');
+    if (!els.length) return false;
+    els.forEach((el) => { el.textContent = state[key]; });
+    return true;
+  }
   let renderT = 0;
   function renderDebounced() { clearTimeout(renderT); renderT = setTimeout(render, 160); }
   document.querySelectorAll('[data-field]').forEach((input) => {
     const key = input.dataset.field;
     if (state[key] != null) input.value = state[key];
-    input.addEventListener('input', () => { state[key] = input.value; renderDebounced(); });
+    input.addEventListener('input', () => {
+      state[key] = input.value;
+      // мгновенное точечное обновление; если элемент не нашёлся — откат на дебаунс-рендер
+      if (!liveText(key)) renderDebounced();
+    });
   });
 
   // ── фото ──

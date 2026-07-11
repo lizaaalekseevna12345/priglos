@@ -235,7 +235,7 @@
     <section class="olg" data-reveal>
       <h2 class="olg-title">${esc(title)}</h2>
       <div class="olg-pola"><div class="olv-pimg" data-photo="${photoKey}" ${bg(photo)}></div></div>
-      <p class="olg-text">${esc(text)}</p>
+      <p class="olg-text" data-bind="${esc(photoKey)}Text">${esc(text)}</p>
     </section>`;
   // финальная бирка на отдельном нижнем фоне (по центру стыка зелёного блока и фона-низа)
   S.oliveBirka = (s) => {
