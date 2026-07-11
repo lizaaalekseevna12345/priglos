@@ -71,7 +71,17 @@
       const p = e.touches ? e.touches[0] : e;
       return { x: p.clientX - r.left, y: p.clientY - r.top };
     }
+    // подсказка «СОТРИ МЕНЯ» — прячем сразу, как только начали стирать
+    function hideHint() {
+      const hint = canvas.parentNode && canvas.parentNode.querySelector('.olv-hint');
+      if (!hint || hint.__gone) return;
+      hint.__gone = true;
+      hint.style.animation = 'none';
+      hint.style.transition = 'opacity .3s ease'; hint.style.opacity = '0';
+      setTimeout(() => { hint.style.display = 'none'; }, 320);
+    }
     function erase(e) {
+      hideHint();
       const { x, y } = pos(e);
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
@@ -122,9 +132,7 @@
       if (revealed) return; revealed = true;
       canvas.style.transition = 'opacity .6s ease'; canvas.style.opacity = '0';
       setTimeout(() => { canvas.style.display = 'none'; }, 600);
-      // подсказка «сотри меня плиз» — гаснет вместе с блёстками
-      const hint = canvas.parentNode && canvas.parentNode.querySelector('.olv-hint');
-      if (hint) { hint.style.transition = 'opacity .5s ease'; hint.style.opacity = '0'; setTimeout(() => { hint.style.display = 'none'; }, 500); }
+      hideHint(); // на всякий случай, если ещё видна
       if (opts.onReveal) try { opts.onReveal(); } catch (e) {}
     }
 
