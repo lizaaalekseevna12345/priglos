@@ -364,9 +364,9 @@
 .v2-root[data-theme="choco"] .olv-names span{font-size:.42em;opacity:.85;margin:.3cqw 0;}
 .v2-root[data-theme="choco"] .olv-date{display:none;}
 /* приглашение (крем): заголовок-скрипт + текст */
-.v2-root[data-theme="choco"] .olv-invtitle{left:8%;top:26.5%;bottom:auto;width:84%;
-  font-family:'Aurora',cursive;font-size:5.6cqw;line-height:1.2;color:#3a2818;text-shadow:none;}
-.v2-root[data-theme="choco"] .olv-invite{left:14%;top:29%;width:72%;font-size:2.7cqw;line-height:1.42;color:#4a3524;}
+.v2-root[data-theme="choco"] .olv-invtitle{left:8%;top:25.8%;bottom:auto;width:84%;text-transform:none;white-space:pre-line;
+  font-family:'Aurora',cursive;font-size:6.4cqw;line-height:1.2;color:#3a2818;text-shadow:none;}
+.v2-root[data-theme="choco"] .olv-invite{left:12%;top:29.4%;width:76%;font-size:3.3cqw;line-height:1.42;color:#4a3524;}
 .v2-root[data-theme="choco"] .olv-ph-1,.v2-root[data-theme="choco"] .olv-ph-2{display:none;}
 /* отсчёт (тёмный, занавес) */
 .v2-root[data-theme="choco"] .olv-cd{left:6%;top:38%;width:88%;}
