@@ -161,7 +161,7 @@
   const SIZEBASE = {
     olive:    { nameSize: 15, dateSize: 13 },
     burgundy: { nameSize: 11, dateSize: 4 },
-    choco:    { nameSize: 14, dateSize: 4 },
+    choco:    { nameSize: 20, dateSize: 4 },
     emerald:  { nameSize: 10.2, dateSize: 13 },
   };
   document.querySelectorAll('[data-size]').forEach((inp) => {

@@ -225,11 +225,18 @@
       stateDefaults: {
         name1: 'Кирилл', name2: 'Василиса',
         inviteTitle: 'Дорогие друзья\nи близкие!',
+        program: [
+          { time:'16:00', label:'Сбор гостей + велком' },
+          { time:'17:00', label:'Церемония' },
+          { time:'18:00', label:'Фотосессия + подарки' },
+          { time:'20:30', label:'Первый танец' },
+          { time:'23:00', label:'Завершение вечера' },
+        ],
         contactsText: 'Если у вас появятся вопросы — будем рады помочь!\nКирилл: +7 900 000-00-00\nВасилиса: +7 900 000-00-01',
-        closing: 'МЫ ОЧЕНЬ ЖДЁМ\nКАЖДОГО ИЗ ВАС!\nС ЛЮБОВЬЮ,\nВАШИ КИРИЛЛ И ВАСИЛИСА!',
-        dressColors: ['#2b1d13', '#5a3a22', '#8a5a33', '#c69b6d', '#f4ecdb'],
+        closing: 'МЫ ОЧЕНЬ ЖДЁМ КАЖДОГО ИЗ ВАС!\nС ЛЮБОВЬЮ,\nВАШИ\nКИРИЛЛ И ВАСИЛИСА!',
+        dressColors: ['#2b1d13', '#6b4325', '#9a6a3a', '#e8d9c0'],
         titleColor: '#f4ecdb', nameColor: '#f4ecdb', dateColor: '#f4ecdb',
-        nameSize: 14, dateSize: 4,
+        nameSize: 20, dateSize: 4,
       },
     },
   };
