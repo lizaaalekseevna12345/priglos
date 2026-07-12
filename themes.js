@@ -185,6 +185,52 @@
         nameSize: 11, dateSize: 4,
       },
     },
+
+    // ░░ Горячий шоколад — анимированная (цельная подложка + оверлеи) ░░
+    choco: {
+      id: 'choco',
+      name: 'Горячий шоколад',
+      vars: {
+        '--green': '#3a2818',
+        '--green-d': '#241610',
+        '--cream': '#f4ecdb',
+        '--ink': '#2b1d13',
+        '--muted': '#8a6f57',
+        '--light': '#f4ecdb',
+        '--gold': '#b6976a',
+        '--line': '#d8cbb5',
+        '--font-heading': "'SourceSerif', Georgia, serif",
+        '--font-names': "'Aurora', 'SourceSerif', cursive",
+        '--font-body': "'SourceSerif', Georgia, serif",
+        '--font-accent': "'Aurora', cursive",
+        '--site': "url('assets/themes/choco/site.jpg')",
+        '--fon': "url('assets/themes/choco/fon.jpg')", // фон доп. блоков (шоколадный флораль)
+        '--ph-img': "url('assets/themes/olive/ph.png')",
+      },
+      labels: {
+        the: '', wed: '',
+        countdownLabel: 'До нашей свадьбы осталось:',
+        venueTitle: 'МЕСТО ВСТРЕЧИ', mapBtn: 'Посмотреть на карте',
+        timelineTitle: 'ПРОГРАММА ВЕЧЕРА', dresscodeTitle: 'ДРЕСС-КОД', detailsTitle: 'ДЕТАЛИ',
+        giftsTitle: 'ПОЖЕЛАНИЯ', photosTitle: 'ФОТОГРАФИИ', storyTitle: 'НАША ИСТОРИЯ',
+        transportTitle: 'ТРАНСФЕР', contactsTitle: 'КОНТАКТЫ', faqTitle: 'ВОПРОСЫ И ОТВЕТЫ',
+      },
+      decor: {
+        glitter: 'assets/themes/choco/scratch.png', // шоколадное кружево — слой скретча
+      },
+      anims: ['scratch', 'stars', 'glitter'],
+      envelope: '',
+      fixedLayout: true,
+      siteW: 512, siteH: 4453,
+      stateDefaults: {
+        name1: 'Кирилл', name2: 'Василиса',
+        contactsText: 'Если у вас появятся вопросы — будем рады помочь!\nКирилл: +7 900 000-00-00\nВасилиса: +7 900 000-00-01',
+        closing: 'МЫ ОЧЕНЬ ЖДЁМ\nКАЖДОГО ИЗ ВАС!\nС ЛЮБОВЬЮ,\nВАШИ КИРИЛЛ И ВАСИЛИСА!',
+        dressColors: ['#2b1d13', '#5a3a22', '#8a5a33', '#c69b6d', '#f4ecdb'],
+        titleColor: '#f4ecdb', nameColor: '#f4ecdb', dateColor: '#f4ecdb',
+        nameSize: 12, dateSize: 4,
+      },
+    },
   };
 
   // применяет тему к корню: ставит data-theme и инжектит CSS-переменные один раз
