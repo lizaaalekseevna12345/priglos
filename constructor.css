@@ -140,9 +140,13 @@ body {
 @media(max-width:560px){ .bsel__grid{grid-template-columns:repeat(2,1fr);} .bsel__box{padding:24px;} .bsel__bar{flex-direction:column;} .bsel__done{width:100%;} }
 
 /* Program repeater */
-.prog__row { display: grid; grid-template-columns: 96px 1fr 32px; gap: 8px; margin-bottom: 8px; }
+.prog__row { display: grid; grid-template-columns: 22px 96px 1fr 32px; gap: 8px; margin-bottom: 8px; align-items: center; background: #fff; }
 .prog__row input { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font: inherit; font-size: 14px; background: #fafafa; }
 .prog__row input:focus { outline: none; border-color: #111; background: #fff; }
+.prog__drag { display: flex; align-items: center; justify-content: center; height: 100%; cursor: grab; color: #b8b8b8; font-size: 15px; line-height: 1; user-select: none; touch-action: none; }
+.prog__drag:active { cursor: grabbing; }
+.prog__row.is-dragging { opacity: .85; box-shadow: 0 8px 22px rgba(0,0,0,.16); border-radius: 8px; position: relative; z-index: 5; }
+.prog__row.is-dragging .prog__drag { cursor: grabbing; color: #111; }
 .prog__del { border: 1px solid var(--line); background: #fff; border-radius: 8px; cursor: pointer; color: #b00; font-size: 16px; }
 .prog__del:hover { background: #fff0f0; }
 

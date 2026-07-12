@@ -178,17 +178,45 @@
 
   // ── программа ──
   const progList = document.getElementById('progList');
+  let progDragRow = null;
   function renderProg(){
     progList.innerHTML='';
-    state.program.forEach((it,i)=>{
-      const row=document.createElement('div'); row.className='prog__row';
-      row.innerHTML=`<input type="time" value="${attr(it.time)}" /><input value="${attr(it.label)}" placeholder="Сбор гостей" /><button class="prog__del" type="button">×</button>`;
+    state.program.forEach((it)=>{
+      const row=document.createElement('div'); row.className='prog__row'; row._item=it;
+      row.innerHTML=`<span class="prog__drag" title="Перетащите, чтобы поменять порядок">⠿</span><input type="time" value="${attr(it.time)}" /><input value="${attr(it.label)}" placeholder="Сбор гостей" /><button class="prog__del" type="button">×</button>`;
       const [t,l]=row.querySelectorAll('input');
-      t.addEventListener('input',()=>{state.program[i].time=t.value;render();});
-      l.addEventListener('input',()=>{state.program[i].label=l.value;render();});
-      row.querySelector('.prog__del').addEventListener('click',()=>{state.program.splice(i,1);renderProg();render();});
+      // при вводе — дебаунс-рендер (без лагов), правим сам объект по ссылке
+      t.addEventListener('input',()=>{it.time=t.value;renderDebounced();});
+      l.addEventListener('input',()=>{it.label=l.value;renderDebounced();});
+      row.querySelector('.prog__del').addEventListener('click',()=>{ const idx=state.program.indexOf(it); if(idx>-1) state.program.splice(idx,1); renderProg(); render(); });
+      row.querySelector('.prog__drag').addEventListener('pointerdown',(e)=>progStartDrag(e,row));
       progList.appendChild(row);
     });
+  }
+  // перетаскивание пунктов (мышь + палец): двигаем сам DOM-узел, порядок state собираем на отпускании
+  function progStartDrag(e, row){
+    e.preventDefault();
+    progDragRow = row;
+    row.classList.add('is-dragging');
+    try { e.target.setPointerCapture(e.pointerId); } catch(_){}
+    document.addEventListener('pointermove', progOnDrag);
+    document.addEventListener('pointerup', progEndDrag, { once:true });
+  }
+  function progOnDrag(e){
+    if(!progDragRow) return;
+    const others=[].slice.call(progList.querySelectorAll('.prog__row:not(.is-dragging)'));
+    let before=null;
+    for(const r of others){ const b=r.getBoundingClientRect(); if(e.clientY < b.top + b.height/2){ before=r; break; } }
+    if(before) progList.insertBefore(progDragRow, before);
+    else progList.appendChild(progDragRow);
+  }
+  function progEndDrag(){
+    document.removeEventListener('pointermove', progOnDrag);
+    if(progDragRow) progDragRow.classList.remove('is-dragging');
+    progDragRow=null;
+    // пересобираем порядок state.program из порядка строк в DOM
+    state.program = [].slice.call(progList.querySelectorAll('.prog__row')).map((r)=>r._item);
+    render();
   }
   document.getElementById('progAdd').addEventListener('click',()=>{ if(state.program.length>=10) return alert('Максимум 10 пунктов.'); state.program.push({time:'12:00',label:'Новый пункт'}); renderProg(); render(); });
 
