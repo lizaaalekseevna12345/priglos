@@ -376,7 +376,8 @@
 .v2-root[data-theme="choco"] .olv-ph-venue{display:none;}
 .v2-root[data-theme="choco"] .olv-vname{left:34%;top:48.5%;width:54%;color:#f4ecdb;font-family:'SourceSerif',serif;}
 .v2-root[data-theme="choco"] .olv-vaddr{left:34%;top:49.4%;width:54%;color:#e6d6bf;}
-.v2-root[data-theme="choco"] .olv-map{left:40%;top:50.4%;width:42%;color:#f4ecdb;border-color:#c9b79c;}
+.v2-root[data-theme="choco"] .olv-map{left:36%;top:50.1%;width:50%;color:#f4ecdb;border:none;background:none;
+  padding:0;min-height:0;height:auto;line-height:1;font-size:2.1cqw;box-shadow:none;}
 /* программа (крем) */
 .v2-root[data-theme="choco"] .olv-prog{left:12%;top:62.5%;width:76%;height:8.6%;}
 .v2-root[data-theme="choco"] .olv-prog .olv-ptime{color:#2b1d13;font-family:'SourceSerif',serif;}
