@@ -228,7 +228,7 @@
         closing: 'МЫ ОЧЕНЬ ЖДЁМ\nКАЖДОГО ИЗ ВАС!\nС ЛЮБОВЬЮ,\nВАШИ КИРИЛЛ И ВАСИЛИСА!',
         dressColors: ['#2b1d13', '#5a3a22', '#8a5a33', '#c69b6d', '#f4ecdb'],
         titleColor: '#f4ecdb', nameColor: '#f4ecdb', dateColor: '#f4ecdb',
-        nameSize: 12, dateSize: 4,
+        nameSize: 14, dateSize: 4,
       },
     },
   };

@@ -357,10 +357,10 @@
 /* герой: фото в шоколадной рамке, скретч-кружево поверх, имена ниже */
 .v2-root[data-theme="choco"] .olv-ph-hero{display:block;left:20.5%;top:5.5%;width:59%;height:8.9%;}
 .v2-root[data-theme="choco"] .olv-scratch{left:18.5%;top:4.8%;width:63%;height:10.3%;}
-.v2-root[data-theme="choco"] .olv-htext{left:10%;top:17.2%;width:80%;height:5%;justify-content:flex-start;}
+.v2-root[data-theme="choco"] .olv-htext{left:10%;top:19%;width:80%;height:5%;justify-content:flex-start;}
 .v2-root[data-theme="choco"] .olv-title{display:none;}
 .v2-root[data-theme="choco"] .olv-names{display:flex;flex-direction:column;align-items:center;
-  font-family:'Aurora',cursive;font-size:12cqw;line-height:.92;color:#f4ecdb;}
+  font-family:'Aurora',cursive;font-size:14cqw;line-height:.92;color:#f4ecdb;}
 .v2-root[data-theme="choco"] .olv-names span{font-size:.42em;opacity:.85;margin:.3cqw 0;}
 .v2-root[data-theme="choco"] .olv-date{display:none;}
 /* приглашение (крем): заголовок-скрипт + текст */
